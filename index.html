@@ -6,7 +6,7 @@
     <title>STARK WEB</title>
     <style>
             body  {
-    background-image:url(ChatGPT\ Image\ Sep\ 4\,\ 2026\,\ 02_29_11\ PM.png) ;
+    background-color: rgb(1, 12, 53);
   background-size: cover;
 }
 h1,h2,h3  {color: rgb(0, 0, 255);
@@ -18,17 +18,87 @@ h2 {
 h3 {
     color: blue;
 }
+        .container {
+            background-image:url(ChatGPT\ Image\ Sep\ 4\,\ 2026\,\ 02_29_11\ PM.png) ;
+            padding: 30px;
+            width: 350px;
+            margin:auto;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            display: block;
+            margin-bottom: 20px; /* فاصله بین کانتینرها */
+        }
+        .floating-button {
+            position:fixed; /* ثابت در صفحه */
+            bottom: 20px; /* 20 پیکسل از پایین */
+            right: 20px; /* 20 پیکسل از راست */
+            width: 60px; /* عرض دایره */
+            height: 60px; /* ارتفاع دایره */
+            background-image:url(file_00000000830082109bb4c162270ee612.png) ;
+            border-radius: 50%; /* دایره‌ای کردن */
+            display: flex; /* برای وسط چین کردن آیکون/متن داخل دکمه */
+            justify-content: center; /* وسط چین کردن افقی */
+            align-items: center; /* وسط چین کردن عمودی */
+            font-size: 10px; /* اندازه آیکون یا متن */
+            color: rgb(4, 255, 0); /* رنگ آیکون/متن */
+            cursor: pointer; /* نشانه موس */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* سایه */
+            z-index: 1000; /* اطمینان از قرارگیری روی همه عناصر */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* انیمیشن نرم */
+        }
 
+        .floating-button:hover {
+            background-image: url(file_00000000830082109bb4c162270ee612.png); /* قرمز تیره‌تر در هاور */
+            transform: scale(1.1); /* کمی بزرگ شدن در هاور */
+        }
+        
+        /* استایل برای صفحه جدید (که فعلا فقط یک placeholder است) */
+        #new-page-content {
+            display: none; /* مخفی است تا زمانی که جاوااسکریپت آن را نشان دهد */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: rgb(0, 255, 38);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            flex-direction: column;
+            font-family: fantasy;
+        }
+                a   {color:rgb(4, 255, 0);
+         text-align: center;
+         font-size: 20px;
+         display: block;
+         margin-bottom: 10px;
+        font-family:cursive;
+}
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* گرد کردن عکس */
+            object-fit: cover; /* تنظیم عکس داخل کادر */
+            border: 4px solid #000000; /* فریم دور عکس */
+            margin:0 auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <img src="file_00000000830082109bb4c162270ee612.png" alt="" class="profile-pic">
+    <div class="container">
     <h1>به یک وبسایت نیاز داری و نمی دونی باید از کجا یک وبسایت بخری؟</h1>
     <h1>قیمت مناسب می خوای؟</h1>
     <h2>می تونم فقط یک سایت فقط برای تو بسازم</h2>
     <h2>اگه می خوای برای شرکت،فروشگاه،کافه،رستوران. . . . سایت بسازی ولی بلد نیستی چجوری</h2>
      <h2>راهکارت پیش خودمه</h2>
 <h1>هرجوری که سایت بخوای برات درست می کنم</h1>
-<h2>قیمت ها 👇</h2>
+</div>
+<div class="container">
+    <h2>قیمت ها 👇</h2>
 <h1> سایت معمولی با پس زمینه ی رنگی ساده=1 میلیون تومان</h1>
 <h1>سایت نیمه پیشرفته با پس زمینه ی عکس دار=2 میلیون تومان</h1>
 <h1>سایت پیشرفته با پس زمینه ی فیلم دار و گزینه ای که به داخل صفحات دیگر برود(مخصوص کافه ها و رستوران ها)=4 میلیون و 500 هزار تومان</h1>
@@ -36,10 +106,47 @@ h3 {
 <h1>برای انلاین کردن وبسایت=1 میلیون تومان</h1>
 <h2>فایل وبسایت=رایگان</h2>
 <h1>اگه کافه یا رستوران داری و من قبلا برات سایت درست کردم و قیمتت رو می خوای تغییر بدی=100 هزار تومان</h1>
+</div>
+<div class="container">
     <h1>می خوای عکس خودت رو ادیت بزنی؟</h1>
     <h2>توی یک عکس خوب افتادی و پشت سریت خیلی بد؟</h2>
-   <h2>قیمت مناسب؟👇</h2>
+   </div>
+   <div class="container">
+    <h2>قیمت مناسب؟👇</h2>
     <h1>فقط 20 تا 100 هزار تومان بیا پیش خودم(عکس های دو بعدی:20 تا 60 هزار تومان)(عکس های سه بعدی:60 تا 100 هزار تومان)</h1>
+    </div>
 <h2>برای خرید و پشتیبانی لطفا به شماره ی 09376163920 در واتساپ پیام دهید</h2>
+<h2>You are the one who will build the future.</h2>
+
+   <a href="newPage.html" class="floating-button" id="openNewPageBtn">
+        <!-- می‌تونید یک آیکون یا متن کوتاه اینجا بذارید، مثلاً '+' یا 'باز کردن' -->
+        می خوای ساخت وبسایت یاد بگیری؟
+    </a>
+
+    <!-- یک div برای صفحه جدید (اختیاری، اگر می‌خواهید صفحه جدید روی همین صفحه باز شود) -->
+    <div id="new-page-content">
+                <h1>اگه میخوای طراحی سایت یاد بگیری و ازش درآمد داشته باشی به من در واتساپ یا بله پیام بده</h1>
+                <h2>قیمت هر جلسه انلاین در واتساپ 1 میلیون تومان</h2>
+        <button onclick="closeNewPage()">BACK</button>
+    </div>
+
+    <script>
+        // قسمت جاوااسکریپت
+        const openButton = document.getElementById('openNewPageBtn');
+        const newPageContent = document.getElementById('new-page-content');
+
+        // اگر می‌خواهید یک صفحه کاملاً جدید باز شود (مانند newPage.html):
+        openButton.addEventListener('click', function(event) {
+            // event.preventDefault(); // این خط را کامنت کنید اگر می‌خواهید صفحه جدید در تب/پنجره جدا باز شود
+            // اگر می‌خواهید صفحه جدید در همین تب باز شود، از کد زیر استفاده کنید:
+             event.preventDefault(); // جلوی باز شدن لینک عادی را می‌گیرد
+             newPageContent.style.display = 'flex'; // صفحه جدید را نمایش می‌دهد
+        });
+
+        // تابعی برای بستن صفحه جدید (اگر از روش نمایش روی همین صفحه استفاده کردید)
+        function closeNewPage() {
+            newPageContent.style.display = 'none'; // صفحه جدید را مخفی می‌کند
+        }
+</script>
 </body>
 </html>
