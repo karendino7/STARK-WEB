@@ -1,332 +1,1082 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>خانه</title>
+    <title>STARK WEB</title>
+
+    <meta name="description"
+        content="STARK WEB - طراحی سایت حرفه‌ای، مدرن و واکنش‌گرا برای کسب‌وکارها">
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0b0f;
-            color: white;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* نوار بالای سایت */
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #050914;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ================= BACKGROUND ================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: #087cff;
+            filter: blur(180px);
+            opacity: .12;
+            top: -250px;
+            right: -200px;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00b7ff;
+            filter: blur(180px);
+            opacity: .08;
+            bottom: -250px;
+            left: -200px;
+            pointer-events: none;
+        }
+
+        /* ================= HEADER ================= */
+
         header {
             width: 100%;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.75);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 10;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 7%;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 9, 20, .65);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .navbar {
+            max-width: 1250px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
             color: white;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-        }
-.blue-link {
-    color: blue;
-}
-  .menu a {
-            text-decoration: none;
-        }
-        nav a:hover {
-            color: #00aaff;
+        .logo span {
+            color: #1688ff;
         }
 
-        /* بخش اصلی */
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .desktop-menu a {
+            color: #d9e4f3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .desktop-menu a:hover {
+            color: #1688ff;
+        }
+
+        .header-btn {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #1688ff, #005eff);
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            box-shadow: 0 0 25px rgba(22,136,255,.25);
+            transition: .3s;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(22,136,255,.5);
+        }
+
+        /* ================= MOBILE MENU ================= */
+
+        .mobile-menu-btn {
+            display: none;
+            width: 43px;
+            height: 43px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.05);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* ================= HERO ================= */
+
         .hero {
-            text-align: center;
-            padding: 80px 20px 50px;
+            min-height: 100vh;
+            max-width: 1250px;
+            margin: auto;
+            padding: 160px 7% 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid rgba(22,136,255,.35);
+            border-radius: 50px;
+            background: rgba(22,136,255,.08);
+            color: #62b2ff;
+            font-size: 13px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
+            font-size: clamp(42px, 5vw, 75px);
+            line-height: 1.15;
+            font-weight: 900;
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
-            color: #00aaff;
+            color: #1688ff;
+            text-shadow: 0 0 35px rgba(22,136,255,.35);
         }
 
         .hero p {
-            color: #bdbdbd;
-            font-size: 18px;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.8;
+            color: #aebbd0;
+            font-size: 17px;
+            line-height: 2;
+            max-width: 570px;
+            margin-bottom: 35px;
         }
 
-        /* کارت ها */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            text-decoration: none;
+            padding: 15px 27px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #1688ff, #005eff);
+            color: white;
+            box-shadow: 0 10px 35px rgba(0,96,255,.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(0,96,255,.4);
+        }
+
+        .secondary-btn {
+            border: 1px solid rgba(255,255,255,.12);
+            color: #dbe7f5;
+            background: rgba(255,255,255,.035);
+        }
+
+        .secondary-btn:hover {
+            border-color: #1688ff;
+            transform: translateY(-4px);
+        }
+
+        /* ================= HERO CARD ================= */
+
+        .hero-card {
+            width: 420px;
+            height: 420px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle {
+            width: 320px;
+            height: 320px;
+            border: 1px solid rgba(22,136,255,.35);
+            border-radius: 50%;
+            position: absolute;
+            animation: rotate 15s linear infinite;
+        }
+
+        .circle::before,
+        .circle::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #1688ff;
+            border-radius: 50%;
+            box-shadow: 0 0 25px #1688ff;
+        }
+
+        .circle::before {
+            top: 20px;
+            left: 80px;
+        }
+
+        .circle::after {
+            bottom: 20px;
+            right: 70px;
+        }
+
+        .hero-logo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #102d55, #07101f 65%);
+            border: 1px solid rgba(22,136,255,.45);
+            box-shadow:
+                0 0 50px rgba(22,136,255,.2),
+                inset 0 0 50px rgba(22,136,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial;
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .hero-logo span {
+            color: #1688ff;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 7%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 28px;
-            margin: 50px 0 30px;
+            margin-bottom: 55px;
         }
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        .section-title span {
+            color: #1688ff;
+            font-size: 14px;
         }
 
-        .card {
-            width: 240px;
-            padding: 30px 20px;
-            background: #15151c;
-            border: 1px solid #292936;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
+        .section-title h2 {
+            font-size: 38px;
+            margin-top: 10px;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #00aaff;
+        .section-title p {
+            color: #8e9caf;
+            margin-top: 15px;
         }
 
-        .card h3 {
-            font-size: 21px;
+        /* ================= SERVICES ================= */
+
+        .services {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
         }
 
-        .card p {
-            color: #aaa;
-            line-height: 1.7;
-        }
-
-        /* فرم */
-        .form-box {
-            max-width: 700px;
-            margin: 40px auto 80px;
+        .service-card {
             padding: 35px;
-            background: #15151c;
-            border: 1px solid #292936;
-            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,.07);
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.055),
+                rgba(255,255,255,.015)
+            );
+            border-radius: 20px;
+            transition: .35s;
         }
 
-        .form-box label {
-            display: block;
-            margin: 15px 0 8px;
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(22,136,255,.45);
+            box-shadow: 0 20px 50px rgba(0,0,0,.25);
         }
 
-        .form-box input,
-        .form-box select,
-        .form-box textarea {
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid #33333f;
-            background: #0e0e13;
-            color: white;
-            font-size: 15px;
-            outline: none;
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(22,136,255,.1);
+            color: #1688ff;
+            font-size: 25px;
+            margin-bottom: 22px;
         }
 
-        .form-box textarea {
-            height: 130px;
-            resize: vertical;
+        .service-card h3 {
+            margin-bottom: 13px;
+            font-size: 20px;
         }
 
-        .form-box input:focus,
-        .form-box select:focus,
-        .form-box textarea:focus {
-            border-color: #00aaff;
+        .service-card p {
+            color: #8996aa;
+            line-height: 1.9;
+            font-size: 14px;
         }
 
-        .submit-btn {
-            width: 100%;
-            margin-top: 25px;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #00aaff;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
+        /* ================= WHY US ================= */
+
+        .why {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        .submit-btn:hover {
-            background: #0088cc;
-        }
-
-        /* فوتر */
-        footer {
+        .why-card {
             text-align: center;
-            padding: 25px;
-            background: #08080b;
-            color: #888;
+            padding: 35px 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
         }
-/* دکمه منوی موبایل */
-.menu-btn {
-    display: none;
-}
-        /* موبایل */
-        @media (max-width: 600px) {
+
+        .why-card strong {
+            display: block;
+            font-size: 34px;
+            color: #1688ff;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: #a2adbd;
+        }
+
+        /* ================= PRICING ================= */
+
+        .pricing {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .price-card {
+            position: relative;
+            padding: 35px;
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.06),
+                rgba(255,255,255,.02)
+            );
+            border: 1px solid rgba(255,255,255,.08);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .price-card.featured {
+            border-color: #1688ff;
+            box-shadow: 0 0 45px rgba(22,136,255,.12);
+            transform: scale(1.03);
+        }
+
+        .popular {
+            position: absolute;
+            top: -13px;
+            right: 50%;
+            transform: translateX(50%);
+            background: #1688ff;
+            color: white;
+            padding: 6px 17px;
+            border-radius: 50px;
+            font-size: 12px;
+        }
+
+        .price-card h3 {
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            font-size: 35px;
+            font-weight: 900;
+            color: #1688ff;
+            margin-bottom: 25px;
+        }
+
+        .price small {
+            font-size: 13px;
+            color: #8d99ab;
+        }
+
+        .features {
+            list-style: none;
+            text-align: right;
+            margin-bottom: 28px;
+        }
+
+        .features li {
+            padding: 9px 0;
+            color: #aeb9c9;
+            font-size: 14px;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #1688ff;
+            margin-left: 8px;
+        }
+
+        .price-btn {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: #1688ff;
+            padding: 13px;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        .price-btn:hover {
+            background: #006cff;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            max-width: 1100px;
+            margin: 50px auto 100px;
+            padding: 65px 30px;
+            text-align: center;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at center,
+                rgba(22,136,255,.2),
+                rgba(22,136,255,.03) 55%,
+                transparent 75%);
+            border: 1px solid rgba(22,136,255,.2);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #9daabd;
+            margin-bottom: 30px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 35px 7%;
+            text-align: center;
+            color: #667286;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #1688ff;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
 
             header {
-                padding: 15px 5%;
+                padding: 14px 5%;
             }
 
-            nav a {
-                margin: 0 5px;
-                font-size: 13px;
+            .desktop-menu,
+            .header-btn {
+                display: none;
             }
 
-            .hero h1 {
-                font-size: 32px;
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 75px;
+                right: 5%;
+                left: 5%;
+                padding: 15px;
+                border-radius: 18px;
+                background: rgba(8,14,27,.96);
+                border: 1px solid rgba(255,255,255,.08);
+                backdrop-filter: blur(20px);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 15px;
+                color: white;
+                text-decoration: none;
+                border-radius: 10px;
+            }
+
+            .mobile-menu a:hover {
+                background: rgba(22,136,255,.1);
+                color: #1688ff;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 130px 6% 70px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
             }
 
             .hero p {
-                font-size: 15px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            .card {
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                width: 300px;
+                height: 300px;
+            }
+
+            .circle {
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-logo {
+                width: 165px;
+                height: 165px;
+                font-size: 27px;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .services,
+            .pricing,
+            .why {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* گوشی‌های خیلی کوچک */
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .primary-btn,
+            .secondary-btn {
                 width: 100%;
             }
 
-            .form-box {
-                padding: 25px 18px;
+            .hero-card {
+                transform: scale(.9);
             }
-                .menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 28px;
-        cursor: pointer;
-    }
-
-    header nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 5%;
-        width: 190px;
-        padding: 10px;
-        background: #15151c;
-        border: 1px solid #292936;
-        border-radius: 12px;
-    }
-
-    header nav.active {
-        display: flex;
-        flex-direction: column;
-    }
-
-    header nav a {
-        margin: 0 !important;
-        padding: 12px;
-        font-size: 15px !important;
-        text-align: right;
-    }
         }
-   h1,h2,h3  {color: rgb(0, 0, 255);
-text-align: center;
-}
-.ka-h3 {
-    text-align:center;
-    margin-right: 15px;
-}
-.ki-h1 {
-    text-align:center;
-    color: blue;
-    margin-right: 15px;
-}
-h2 {
-    color: cyan;  
-}
-h3 {
-    color: rgb(255, 0, 0);
-}
-p {
-    color: red;
-   text-align: center; 
-
-}
-        .profile-pic {
-            width: 300px;
-            height:300px;
-            border-radius: 50%; /* گرد کردن عکس */
-            object-fit: cover; /* تنظیم عکس داخل کادر */
-            border: 4px solid #000000; /* فریم دور عکس */
-            margin: auto;
-            display: block;
-            justify-content: center;
-            align-items: center;
-        }
-        .join-btn {
-    display: table;
-    background-color:blue;
-    color: white;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    margin: 20px auto;
-}
     </style>
 </head>
 
 <body>
 
-    <!-- نوار بالا -->
+    <!-- ================= HEADER ================= -->
+
     <header>
 
-        <div class="logo">
-            STARK WEB
-        </div>
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-     <nav>
-<a href="index.html">خانه</a>
-<a href="index2.html">خدمات</a>
-<a href="index3.html">قیمت ها</a>
-<a href="index9.html">نمونه کار ها</a>
-<a href="index4.html">تماس با ما</a>
+        <div class="navbar">
 
-</nav>
+            <div class="logo">
+                STARK<span>WEB</span>
+            </div>
+
+            <!-- منوی لپ‌تاپ -->
+            <nav class="desktop-menu">
+                <a href="#home">خانه</a>
+                <a href="#services">خدمات</a>
+                <a href="#why">درباره ما</a>
+                <a href="#pricing">قیمت‌ها</a>
+                <a href="#contact">تماس</a>
+            </nav>
+
+            <a class="header-btn" href="#contact">
+                سفارش سایت
+            </a>
+
+            <!-- فقط موبایل -->
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+        <!-- منوی موبایل -->
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="closeMenu()">خانه</a>
+            <a href="#services" onclick="closeMenu()">خدمات</a>
+            <a href="#why" onclick="closeMenu()">درباره ما</a>
+            <a href="#pricing" onclick="closeMenu()">قیمت‌ها</a>
+            <a href="#contact" onclick="closeMenu()">تماس</a>
+        </nav>
 
     </header>
-<img src="file_00000000830082109bb4c162270ee612.png" alt="" class="profile-pic">
-<h1 class="ki-h1">سایتی بسازید که مشتری را به شما برساند</h1>
-<h3 class="ka-h3">سایت‌های سریع، تمیز و سازگار با موبایل طراحی می‌کند؛ از سایت معرفی کسب‌وکار تا فروشگاه و صفحه شخصی STARK-WEB</h3>
-<a href="index5.html" class="join-btn">شروع کنید</a>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <span class="badge">
+                    طراحی سایت مدرن و حرفه‌ای
+                </span>
+
+                <h1>
+                    سایتت رو
+                    <span>متفاوت</span>
+                    بساز
+                </h1>
+
+                <p>
+                    در STARK WEB برای شما سایت‌هایی سریع،
+                    مدرن، زیبا و کاملاً واکنش‌گرا طراحی می‌کنیم؛
+                    تا کسب‌وکارتان در دنیای دیجیتال حرفه‌ای دیده شود.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#contact" class="primary-btn">
+                        شروع کنید 🚀
+                    </a>
+
+                    <a href="#services" class="secondary-btn">
+                        مشاهده خدمات
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="circle"></div>
+
+                <div class="hero-logo">
+                    WEB<span>STARK</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section id="services">
+
+            <div class="section-title">
+
+                <span>خدمات ما</span>
+
+                <h2>
+                    چیزی بیشتر از یک سایت
+                </h2>
+
+                <p>
+                    هر چیزی که برای داشتن یک سایت حرفه‌ای نیاز دارید.
+                </p>
+
+            </div>
+
+
+            <div class="services">
+
+                <div class="service-card">
+
+                    <div class="service-icon">⌘</div>
+
+                    <h3>
+                        طراحی سایت
+                    </h3>
+
+                    <p>
+                        طراحی سایت اختصاصی با ظاهر مدرن،
+                        حرفه‌ای و متناسب با برند شما.
+                    </p>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">◈</div>
+
+                    <h3>
+                        طراحی واکنش‌گرا
+                    </h3>
+
+                    <p>
+                        سایت شما در موبایل، تبلت و لپ‌تاپ
+                        به بهترین شکل نمایش داده می‌شود.
+                    </p>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">⚡</div>
+
+                    <h3>
+                        سرعت بالا
+                    </h3>
+
+                    <p>
+                        کدنویسی بهینه برای تجربه سریع‌تر
+                        و بهتر کاربران سایت.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WHY ================= -->
+
+        <section id="why">
+
+            <div class="section-title">
+
+                <span>STARK WEB</span>
+
+                <h2>
+                    چرا ما؟
+                </h2>
+
+            </div>
+
+
+            <div class="why">
+
+                <div class="why-card">
+
+                    <strong>100%</strong>
+
+                    <p>
+                        طراحی اختصاصی
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <strong>24/7</strong>
+
+                    <p>
+                        دسترسی به سایت
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <strong>∞</strong>
+
+                    <p>
+                        امکان توسعه سایت
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRICING ================= -->
+
+        <section id="pricing">
+
+            <div class="section-title">
+
+                <span>قیمت‌ها</span>
+
+                <h2>
+                    پلن مناسب خودت را انتخاب کن
+                </h2>
+
+                <p>
+                    شروع حرفه‌ای شدن می‌تواند همین امروز باشد.
+                </p>
+
+            </div>
+
+
+            <div class="pricing">
+
+                <div class="price-card">
+
+                    <h3>
+                        پایه
+                    </h3>
+
+                    <div class="price">
+                        1 میلیون
+                        <small>تومان</small>
+                    </div>
+
+                    <ul class="features">
+
+                        <li>طراحی اختصاصی</li>
+                        <li>نسخه موبایل</li>
+                        <li>نسخه لپ‌تاپ</li>
+                        <li>صفحه اصلی</li>
+
+                    </ul>
+
+                    <a href="#contact" class="price-btn">
+                        سفارش
+                    </a>
+
+                </div>
+
+
+                <div class="price-card featured">
+
+                    <div class="popular">
+                        محبوب‌ترین
+                    </div>
+
+                    <h3>
+                        پیشرفته
+                    </h3>
+
+                    <div class="price">
+                        4.500 میلیون
+                        <small>تومان</small>
+                    </div>
+
+                    <ul class="features">
+
+                        <li>طراحی حرفه‌ای</li>
+                        <li>کاملاً واکنش‌گرا</li>
+                        <li>انیمیشن و افکت</li>
+                        <li>چند صفحه</li>
+                        <li>بهینه‌سازی</li>
+
+                    </ul>
+
+                    <a href="#contact" class="price-btn">
+                        سفارش
+                    </a>
+
+                </div>
+
+
+                <div class="price-card">
+
+                    <h3>
+                        نیمه پیشرفته
+                    </h3>
+
+                    <div class="price">
+                        2 میلیون
+                        <small>تومان</small>
+                    </div>
+
+                    <ul class="features">
+
+                        <li>طراحی کاملاً اختصاصی</li>
+                        <li>امکانات سفارشی</li>
+                        <li>پنل و سیستم‌های خاص</li>
+                        <li>پشتیبانی</li>
+
+                    </ul>
+
+                    <a href="#contact" class="price-btn">
+                        مشاوره
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section id="contact">
+
+            <div class="cta">
+
+                <h2>
+                    آماده‌ای سایتت رو بسازی؟
+                </h2>
+
+                <p>
+                    اولین قدم برای حرفه‌ای‌تر دیده شدن،
+                    داشتن یک سایت حرفه‌ای است.
+                </p>
+
+           <h2>برای سفارش و پشتیبانی لطفا به شماره 09376163920 در بله یا واتسپ پیام دهید</h2>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
 
-        ©  STARK WEB
-        <br>
-        STARK WEB طراحی و توسعه سایت با 
+        
+        <strong>STARK WEB</strong>
+        — تمامی حقوق محفوظ است.
 
     </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script>
-function toggleMenu() {
-    document.querySelector("header nav").classList.toggle("active");
-}
-</script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("mobileMenu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        function closeMenu() {
+
+            const menu = document.getElementById("mobileMenu");
+
+            menu.classList.remove("active");
+
+        }
+
+
+        // بستن منو با کلیک بیرون
+
+        document.addEventListener("click", function (event) {
+
+            const menu = document.getElementById("mobileMenu");
+            const button = document.querySelector(".mobile-menu-btn");
+
+            if (
+                !menu.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                menu.classList.remove("active");
+
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>
