@@ -183,7 +183,10 @@
             background: #08080b;
             color: #888;
         }
-
+/* دکمه منوی موبایل */
+.menu-btn {
+    display: none;
+}
         /* موبایل */
         @media (max-width: 600px) {
 
@@ -211,16 +214,48 @@
             .form-box {
                 padding: 25px 18px;
             }
+                .menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        width: 190px;
+        padding: 10px;
+        background: #15151c;
+        border: 1px solid #292936;
+        border-radius: 12px;
+    }
+
+    header nav.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header nav a {
+        margin: 0 !important;
+        padding: 12px;
+        font-size: 15px !important;
+        text-align: right;
+    }
         }
    h1,h2,h3  {color: rgb(0, 0, 255);
 text-align: center;
 }
 .ka-h3 {
-    text-align: right;
+    text-align:center;
     margin-right: 15px;
 }
 .ki-h1 {
-    text-align: right;
+    text-align:center;
     color: blue;
     margin-right: 15px;
 }
@@ -266,7 +301,7 @@ p {
         <div class="logo">
             STARK WEB
         </div>
-
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
      <nav>
 <a href="index.html">خانه</a>
 <a href="index2.html">خدمات</a>
@@ -288,5 +323,10 @@ p {
         STARK WEB طراحی و توسعه سایت با 
 
     </footer>
+    <script>
+function toggleMenu() {
+    document.querySelector("header nav").classList.toggle("active");
+}
+</script>
 </body>
 </html>
