@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STARK WEB ACADEMY</title>
+
+<style>
+:root {
+    --bg: #0b1020;
+    --panel: #121a2e;
+    --gold: #ffc857;
+    --blue: #66a6ff;
+    --text: #eef3ff;
+    --muted: #aab7d2;
+    --border: #2a3856;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(ellipse at top, #182849, var(--bg) 75%);
+    color: var(--text);
+    font-family: Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+}
+
+header {
+    padding: 35px 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--gold);
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+header h1 {
+    font-size: clamp(25px, 5vw, 42px);
+    margin: 10px 0;
+}
+
+header p {
+    color: var(--muted);
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 15px 50px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat,
+.sidebar,
+.lesson {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 16px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    color: var(--gold);
+    font-size: 23px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 270px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 12px;
+}
+
+.course-tab {
+    width: 100%;
+    padding: 10px;
+    margin: 4px 0;
+    text-align: right;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.course-tab:hover,
+.course-tab.active {
+    background: #18233b;
+    border-color: var(--border);
+    color: var(--gold);
+}
+
+.course-tab small {
+    color: var(--muted);
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.lesson h2 {
+    font-size: 26px;
+}
+
+.lesson h3 {
+    color: var(--gold);
+    margin-top: 25px;
+}
+
+.lesson p,
+.lesson li {
+    color: #d4def2;
+}
+
+pre {
+    direction: ltr;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #070b14;
+    color: #cce4ff;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font: 14px/1.8 Consolas, monospace;
+}
+
+.tip {
+    background: #172b2a;
+    border-right: 4px solid #58d6a3;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+}
+
+.quiz {
+    background: #18233b;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.quiz label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.btn {
+    border: 0;
+    border-radius: 9px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.primary {
+    background: var(--gold);
+    color: #172033;
+}
+
+.secondary {
+    background: #18233b;
+    color: white;
+    border: 1px solid var(--border);
+}
+
+.progress-track {
+    height: 8px;
+    background: #26344f;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), #58d6a3);
+    transition: width .3s;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 25px;
+}
+
+@media (max-width: 760px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    #lessonNav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+    }
+
+    .lesson h2 {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">STARK WEB ACADEMY</div>
+    <h1>از اولین تگ تا سایت تعاملی</h1>
+    <p>
+        آموزش قدم‌به‌قدم HTML، CSS و JavaScript
+    </p>
+</header>
+
+<main class="wrap">
+
+    <div class="stats">
+        <div class="stat">
+            <strong>۳</strong>
+            زبان اصلی وب
+        </div>
+
+        <div class="stat">
+            <strong id="lessonCount">۲۴</strong>
+            درس آموزشی
+        </div>
+
+        <div class="stat">
+            <strong id="progressText">۰٪</strong>
+            پیشرفت دوره
+        </div>
+    </div>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <h3>فهرست دوره</h3>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <nav id="lessonNav"></nav>
+        </aside>
+
+        <section class="lesson" id="lessonContent"></section>
+
+    </div>
+
+</main>
+
+<footer>
+    ساخته‌شده برای یادگیری طراحی سایت با STARK WEB
+</footer>
+
+<script>
+const lessons = [
+
+{
+course: "HTML",
+title: "ساختار اصلی صفحه",
+desc: "هر صفحه وب به ساختار HTML نیاز دارد.",
+code: `<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سایت من</title>
+</head>
+<body>
+    <h1>سلام دنیا!</h1>
+</body>
+</html>`,
+explain: [
+"DOCTYPE نوع سند را مشخص می‌کند.",
+"head اطلاعات صفحه را نگه می‌دارد.",
+"body محتوای قابل مشاهده صفحه است."
+],
+q: "محتوای اصلی صفحه در کدام بخش است؟",
+opts: ["head", "body", "title"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "عنوان‌ها و پاراگراف‌ها",
+desc: "برای عنوان‌ها از h1 تا h6 و برای پاراگراف از p استفاده می‌کنیم.",
+code: `<h1>عنوان اصلی</h1>
+<h2>عنوان بخش</h2>
+<p>این یک پاراگراف است.</p>`,
+explain: [
+"h1 مهم‌ترین سطح عنوان است.",
+"h6 کوچک‌ترین سطح عنوان است.",
+"p برای نوشتن پاراگراف استفاده می‌شود."
+],
+q: "تگ پاراگراف چیست؟",
+opts: ["img", "p", "hr"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "لینک و تصویر",
+desc: "با a لینک و با img تصویر اضافه می‌کنیم.",
+code: `<a href="https://example.com">ورود به سایت</a>
+
+<img src="photo.jpg" alt="تصویر نمونه" width="300">`,
+explain: [
+"href آدرس مقصد لینک است.",
+"src مسیر تصویر است.",
+"alt توضیح جایگزین تصویر است."
+],
+q: "کدام ویژگی مسیر تصویر را مشخص می‌کند؟",
+opts: ["href", "src", "class"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "خط و توضیحات",
+desc: "از hr برای خط افقی و از br برای رفتن به خط بعد استفاده می‌شود.",
+code: `<p>خط اول</p>
+<hr>
+<p>خط دوم<br>ادامه متن</p>
+
+<!-- این توضیح نمایش داده نمی‌شود -->`,
+explain: [
+"hr خط افقی می‌سازد.",
+"br متن را به خط بعد می‌برد.",
+"کامنت برای توضیح داخل کد است."
+],
+q: "کدام تگ خط افقی ایجاد می‌کند؟",
+opts: ["br", "hr", "p"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "فهرست‌ها",
+desc: "با ul فهرست معمولی و با ol فهرست شماره‌دار می‌سازیم.",
+code: `<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+</ul>
+
+<ol>
+    <li>مرحله اول</li>
+    <li>مرحله دوم</li>
+</ol>`,
+explain: [
+"ul فهرست بدون شماره است.",
+"ol فهرست شماره‌دار است.",
+"li یک مورد از فهرست است."
+],
+q: "کدام تگ فهرست شماره‌دار می‌سازد؟",
+opts: ["ul", "ol", "li"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "کانتینر div",
+desc: "از div برای گروه‌بندی عناصر صفحه استفاده می‌کنیم.",
+code: `<div class="container">
+    <h2>کارت من</h2>
+    <p>محتوای کارت</p>
+</div>`,
+explain: [
+"div یک ظرف عمومی است.",
+"class برای نام‌گذاری گروهی عناصر است.",
+"می‌توان با CSS ظاهر کانتینر را تغییر داد."
+],
+q: "برای انتخاب گروهی عناصر از چه ویژگی‌ای استفاده می‌کنیم؟",
+opts: ["src", "class", "href"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "شناسه و لینک داخلی",
+desc: "با id به هر عنصر شناسه می‌دهیم.",
+code: `<a href="#contact">تماس با ما</a>
+
+<section id="contact">
+    <h2>تماس با ما</h2>
+</section>`,
+explain: [
+"id شناسه یک عنصر است.",
+"شناسه‌ها در همان صفحه باید یکتا باشند.",
+"# برای لینک‌دادن به شناسه استفاده می‌شود."
+],
+q: "برای لینک به id برابر about چه می‌نویسیم؟",
+opts: ["href='about'", "href='#about'", "id='#about'"],
+correct: 1
+},
+
+{
+course: "HTML",
+title: "جدول‌ها",
+desc: "از جدول برای نمایش اطلاعات ردیفی و ستونی استفاده می‌کنیم.",
+code: `<table>
+    <tr>
+        <th>نام</th>
+        <th>نمره</th>
+    </tr>
+    <tr>
+        <td>آراد</td>
+        <td>20</td>
+    </tr>
+</table>`,
+explain: [
+"table جدول است.",
+"tr یک ردیف است.",
+"th عنوان و td داده جدول است."
+],
+q: "تگ ردیف جدول چیست؟",
+opts: ["tr", "td", "th"],
+correct: 0
+},
+
+{
+course: "HTML",
+title: "فرم‌ها",
+desc: "فرم‌ها اطلاعات را از کاربر دریافت می‌کنند.",
+code: `<form>
+    <label for="name">نام:</label>
+    <input id="name" type="text" required>
+    <button type="submit">ارسال</button>
+</form>`,
+explain: [
+"input محل واردکردن اطلاعات است.",
+"label عنوان ورودی را مشخص می‌کند.",
+"برای ذخیره واقعی اطلاعات به سرور یا سرویس مناسب نیاز است."
+],
+q: "کدام عنصر برای دریافت متن است؟",
+opts: ["input", "img", "hr"],
+correct: 0
+},
+
+{
+course: "HTML",
+title: "تگ‌های معنایی",
+desc: "تگ‌های معنایی ساختار صفحه را روشن‌تر می‌کنند.",
+code: `<header>سربرگ</header>
+<nav>منو</nav>
+<main>محتوای اصلی</main>
+<section>یک بخش</section>
+<footer>پاورقی</footer>`,
+explain: [
+"header سربرگ صفحه است.",
+"nav برای ناوبری است.",
+"main محتوای اصلی را مشخص می‌کند."
+],
+q: "کدام تگ محتوای اصلی را مشخص می‌کند؟",
+opts: ["footer", "main", "nav"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "اتصال فایل CSS",
+desc: "CSS ظاهر عناصر HTML را تغییر می‌دهد.",
+code: `<!-- داخل head -->
+<link rel="stylesheet" href="style.css">
+
+/* داخل style.css */
+body {
+    background: #101827;
+    color: white;
+}`,
+explain: [
+"CSS را می‌توان در فایل جداگانه نوشت.",
+"نام فایل باید درست باشد.",
+"link فایل CSS را به HTML متصل می‌کند."
+],
+q: "پسوند معمول فایل CSS چیست؟",
+opts: [".html", ".css", ".js"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "انتخابگرها",
+desc: "با انتخابگرها مشخص می‌کنیم کدام عناصر طراحی شوند.",
+code: `p {
+    color: red;
+}
+
+.title {
+    color: gold;
+}
+
+#main {
+    background: black;
+}`,
+explain: [
+"نام تگ برای انتخاب تگ‌هاست.",
+"نقطه برای انتخاب class است.",
+"# برای انتخاب id است."
+],
+q: "برای انتخاب class از چه علامتی استفاده می‌کنیم؟",
+opts: ["#", ".", "*"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "رنگ‌ها و پس‌زمینه",
+desc: "رنگ متن و پس‌زمینه را می‌توان با CSS تغییر داد.",
+code: `body {
+    background-color: #101827;
+    color: white;
+}
+
+h1 {
+    color: #ffc857;
+}`,
+explain: [
+"color رنگ متن را مشخص می‌کند.",
+"background-color رنگ پس‌زمینه را مشخص می‌کند.",
+"رنگ‌ها را می‌توان با نام یا کد رنگ نوشت."
+],
+q: "کدام ویژگی رنگ متن را تغییر می‌دهد؟",
+opts: ["color", "width", "margin"],
+correct: 0
+},
+
+{
+course: "CSS",
+title: "اندازه‌ها",
+desc: "با width و height اندازه عناصر را مشخص می‌کنیم.",
+code: `.box {
+    width: 300px;
+    height: 150px;
+    max-width: 100%;
+}`,
+explain: [
+"width عرض است.",
+"height ارتفاع است.",
+"max-width حداکثر عرض را محدود می‌کند."
+],
+q: "کدام ویژگی عرض عنصر است؟",
+opts: ["height", "width", "padding"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "فاصله‌ها",
+desc: "margin فاصله بیرونی و padding فاصله داخلی است.",
+code: `.card {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid white;
+}`,
+explain: [
+"margin فاصله بیرون کادر است.",
+"padding فاصله محتوا تا کادر است.",
+"border کادر عنصر است."
+],
+q: "کدام ویژگی فاصله داخلی را تنظیم می‌کند؟",
+opts: ["margin", "padding", "color"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "فونت و متن",
+desc: "با ویژگی‌های متنی، نوشته‌ها را طراحی می‌کنیم.",
+code: `h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    line-height: 2;
+}`,
+explain: [
+"font-size اندازه متن است.",
+"font-weight ضخامت متن است.",
+"text-align چینش متن را مشخص می‌کند."
+],
+q: "کدام ویژگی اندازه متن را تعیین می‌کند؟",
+opts: ["font-size", "border", "display"],
+correct: 0
+},
+
+{
+course: "CSS",
+title: "کادر و گوشه‌ها",
+desc: "با border و border-radius کادرها را طراحی می‌کنیم.",
+code: `.card {
+    border: 2px solid gold;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #0008;
+}`,
+explain: [
+"border کادر عنصر است.",
+"border-radius گوشه‌ها را گرد می‌کند.",
+"box-shadow سایه ایجاد می‌کند."
+],
+q: "برای گردکردن گوشه‌ها از چه ویژگی‌ای استفاده می‌شود؟",
+opts: ["border", "border-radius", "padding"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "Flexbox",
+desc: "Flexbox برای چیدمان عناصر در ردیف یا ستون مناسب است.",
+code: `.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}`,
+explain: [
+"display: flex چیدمان فلکس را فعال می‌کند.",
+"justify-content چینش در محور اصلی است.",
+"align-items چینش در محور دیگر است."
+],
+q: "چگونه Flexbox را فعال می‌کنیم؟",
+opts: ["display: flex", "position: flex", "flex: display"],
+correct: 0
+},
+
+{
+course: "CSS",
+title: "Grid",
+desc: "CSS Grid برای ساخت چیدمان‌های چندستونه مناسب است.",
+code: `.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}`,
+explain: [
+"display: grid چیدمان شبکه‌ای را فعال می‌کند.",
+"grid-template-columns تعداد و اندازه ستون‌ها را تعیین می‌کند.",
+"gap فاصله میان خانه‌هاست."
+],
+q: "کدام ویژگی تعداد ستون‌ها را مشخص می‌کند؟",
+opts: ["gap", "grid-template-columns", "color"],
+correct: 1
+},
+
+{
+course: "CSS",
+title: "طراحی واکنش‌گرا",
+desc: "با Media Query ظاهر سایت را برای اندازه‌های مختلف تغییر می‌دهیم.",
+code: `@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}`,
+explain: [
+"Media Query برای شرایط صفحه استفاده می‌شود.",
+"max-width حداکثر عرض را مشخص می‌کند.",
+"طراحی باید در گوشی و لپ‌تاپ بررسی شود."
+],
+q: "برای تنظیم ظاهر در اندازه‌های مختلف از چه چیزی استفاده می‌کنیم؟",
+opts: ["Media Query", "alt", "console.log"],
+correct: 0
+},
+
+{
+course: "CSS",
+title: "Hover و Transition",
+desc: "با hover و transition افکت‌های تعاملی می‌سازیم.",
+code: `.button {
+    background: gold;
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}`,
+explain: [
+":hover هنگام قرارگرفتن اشاره‌گر روی عنصر فعال می‌شود.",
+"transition تغییرات را نرم می‌کند.",
+"transform ظاهر یا موقعیت عنصر را تغییر می‌دهد."
+],
+q: "کدام ویژگی تغییرات را نرم می‌کند؟",
+opts: ["transition", "padding", "width"],
+correct: 0
+},
+
+{
+course: "JavaScript",
+title: "اتصال JavaScript",
+desc: "JavaScript رفتار و تعامل به سایت اضافه می‌کند.",
+code: `// در فایل HTML
+<script src="app.js"><\/script>
+
+// در فایل app.js
+console.log("سلام دنیا!");`,
+explain: [
+"HTML ساختار سایت را می‌سازد.",
+"CSS ظاهر سایت را طراحی می‌کند.",
+"JavaScript رفتار سایت را کنترل می‌کند."
+],
+q: "کدام زبان برای رفتار تعاملی سایت است؟",
+opts: ["HTML", "CSS", "JavaScript"],
+correct: 2
+},
+
+{
+course: "JavaScript",
+title: "متغیرها",
+desc: "متغیرها برای نگهداری داده‌ها استفاده می‌شوند.",
+code: `const siteName = "STARK WEB";
+let score = 0;
+
+score = score + 1;
+
+console.log(siteName, score);`,
+explain: [
+"let برای متغیر قابل تغییر است.",
+"const برای متغیری است که دوباره مقداردهی نمی‌شود.",
+"console.log برای نمایش پیام در کنسول است."
+],
+q: "برای تعریف متغیر قابل تغییر کدام مناسب است؟",
+opts: ["let", "const", "style"],
+correct: 0
+},
+
+{
+course: "JavaScript",
+title: "شرط‌ها",
+desc: "با if و else بر اساس وضعیت تصمیم می‌گیریم.",
+code: `const score = 18;
+
+if (score >= 10) {
+    console.log("قبول شدی");
+} else {
+    console.log("بیشتر تمرین کن");
+}`,
+explain: [
+"if شرط را بررسی می‌کند.",
+"اگر شرط درست باشد، کد داخل if اجرا می‌شود.",
+"در غیر این صورت می‌توان از else استفاده کرد."
+],
+q: "وقتی شرط if درست نباشد، کدام بخش می‌تواند اجرا شود؟",
+opts: ["else", "head", "style"],
+correct: 0
+},
+
+{
+course: "JavaScript",
+title: "توابع و رویدادها",
+desc: "تابع برای اجرای دوباره یک مجموعه دستور و رویداد برای واکنش به کاربر است.",
+code: `function greet(name) {
+    return "سلام " + name;
+}
+
+document.querySelector("#btn")
+    .addEventListener("click", function () {
+        alert(greet("دوست من"));
+    });`,
+explain: [
+"function یک تابع تعریف می‌کند.",
+"return نتیجه را برمی‌گرداند.",
+"click رویداد کلیک است."
+],
+q: "کدام رویداد برای کلیک است؟",
+opts: ["click", "color", "margin"],
+correct: 0
+}
+
+];
+
+const nav = document.getElementById("lessonNav");
+const content = document.getElementById("lessonContent");
+const done = new Set();
+
+lessons.forEach((lesson, index) => {
+    const button = document.createElement("button");
+
+    button.className = "course-tab";
+    button.dataset.index = index;
+    button.textContent = `${index + 1}. ${lesson.title}`;
+
+    button.addEventListener("click", () => render(index));
+
+    nav.appendChild(button);
+});
+
+function updateProgress() {
+    const percent = Math.round(done.size / lessons.length * 100);
+
+    document.getElementById("progressFill").style.width = percent + "%";
+    document.getElementById("progressText").textContent = percent + "٪";
+    document.getElementById("lessonCount").textContent = lessons.length;
+
+    document.querySelectorAll(".course-tab").forEach(button => {
+        const index = Number(button.dataset.index);
+
+        if (done.has(index)) {
+            button.textContent = "✓ " + (index + 1) + ". " + lessons[index].title;
+        } else {
+            button.textContent = (index + 1) + ". " + lessons[index].title;
+        }
+    });
+}
+
+function render(index) {
+    const lesson = lessons[index];
+
+    document.querySelectorAll(".course-tab").forEach(button => {
+        button.classList.toggle(
+            "active",
+            Number(button.dataset.index) === index
+        );
+    });
+
+    content.innerHTML = `
+        <div class="eyebrow">
+            ${lesson.course} | درس ${index + 1} از ${lessons.length}
+        </div>
+
+        <h2>${lesson.title}</h2>
+        <p>${lesson.desc}</p>
+
+        <h3>نمونه کد</h3>
+        <pre><code></code></pre>
+
+        <h3>نکته‌های درس</h3>
+        <ul>
+            ${lesson.explain.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+
+        <div class="tip">
+            تمرین: کد را در VS Code بنویس و نتیجه را بررسی کن.
+        </div>
+
+        <div class="quiz">
+            <strong>آزمون کوتاه</strong>
+            <p>${lesson.q}</p>
+
+            ${lesson.opts.map((option, i) => `
+                <label>
+                    <input type="radio" name="answer" value="${i}">
+                    ${option}
+                </label>
+            `).join("")}
+
+            <button class="btn secondary" id="check">
+                بررسی پاسخ
+            </button>
+
+            <div class="result" id="result"></div>
+        </div>
+
+        <div class="actions">
+            <button class="btn primary" id="complete">
+                تکمیل درس
+            </button>
+
+            <button class="btn secondary" id="prev"
+                ${index === 0 ? "disabled" : ""}>
+                درس قبلی
+            </button>
+
+            <button class="btn secondary" id="next"
+                ${index === lessons.length - 1 ? "disabled" : ""}>
+                درس بعدی
+            </button>
+        </div>
+    `;
+
+    content.querySelector("pre code").textContent = lesson.code;
+
+    content.querySelector("#check").addEventListener("click", () => {
+        const selected = content.querySelector(
+            'input[name="answer"]:checked'
+        );
+
+        const result = content.querySelector("#result");
+
+        if (!selected) {
+            result.textContent = "اول یک پاسخ انتخاب کن.";
+            result.style.color = "var(--gold)";
+            return;
+        }
+
+        if (Number(selected.value) === lesson.correct) {
+            result.textContent = "آفرین! پاسخ درست است.";
+            result.style.color = "#58d6a3";
+
+            done.add(index);
+            updateProgress();
+        } else {
+            result.textContent = "پاسخ درست نیست؛ دوباره تلاش کن.";
+            result.style.color = "#ff9292";
+        }
+    });
+
+    content.querySelector("#complete").addEventListener("click", () => {
+        done.add(index);
+        updateProgress();
+        render(index);
+    });
+
+    content.querySelector("#prev").addEventListener("click", () => {
+        if (index > 0) render(index - 1);
+    });
+
+    content.querySelector("#next").addEventListener("click", () => {
+        if (index < lessons.length - 1) render(index + 1);
+    });
+
+    updateProgress();
+}
+
+render(0);
+</script>
+
+</body>
+</html>
