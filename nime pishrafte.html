@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOIR CAFÉ | عطر قهوه، آرامش هر روز</title>
+
+    <meta name="description"
+          content="به NOIR CAFÉ خوش آمدید؛ جایی برای لذت بردن از عطر قهوه و لحظه‌های آرام.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #17120f;
+            --surface: #211a15;
+            --cream: #f2e5d0;
+            --muted: #c0ad99;
+            --brown: #b98251;
+            --line: #49372a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--cream);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            line-height: 1.9;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* سربرگ ساده */
+
+        header {
+            min-height: 82px;
+            padding: 18px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            direction: ltr;
+            font-family: Georgia, serif;
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--brown);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        nav a {
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--brown);
+        }
+
+        /* خط تزئینی */
+
+        .gold-line {
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--brown),
+                transparent
+            );
+        }
+
+        /* بخش اصلی */
+
+        main {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 510px;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 530px;
+        }
+
+        .eyebrow {
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 17px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 4.5vw, 53px);
+            line-height: 1.65;
+            font-weight: 800;
+        }
+
+        h1 span {
+            color: var(--brown);
+        }
+
+        .hero-description {
+            margin-top: 18px;
+            max-width: 450px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.4;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 27px;
+            padding: 10px 27px;
+            background: var(--brown);
+            border: 1px solid var(--brown);
+            color: #17120f;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .hero-button:hover {
+            background: transparent;
+            color: var(--cream);
+        }
+
+        /* تصویر اصلی */
+
+        .hero-image {
+            flex: 1;
+            max-width: 440px;
+            min-width: 0;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            max-height: 430px;
+            object-fit: cover;
+            border: 1px solid var(--line);
+        }
+
+        /* خط جداکننده */
+
+        .section-line {
+            width: 84%;
+            height: 1px;
+            margin: 0 auto;
+            background: var(--line);
+        }
+
+        /* درباره کافه */
+
+        .about {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--brown);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 8px;
+            font-size: clamp(24px, 3vw, 32px);
+        }
+
+        .about p {
+            max-width: 680px;
+            margin: 18px auto 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.5;
+        }
+
+        /* منوی متنی ساده */
+
+        .menu {
+            padding: 50px 8% 65px;
+            background: var(--surface);
+        }
+
+        .menu-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .menu-list {
+            max-width: 650px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .menu-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .item-description {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .item-price {
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* اطلاعات تماس */
+
+        .contact {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .contact p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact a {
+            color: var(--brown);
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* پابرگ */
+
+        footer {
+            padding: 23px 15px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* موبایل */
+
+        @media (max-width: 700px) {
+            header {
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 20px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 45px 7%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 30px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+
+            .hero-image img {
+                aspect-ratio: 5 / 4;
+                max-height: 350px;
+            }
+
+            .about {
+                padding: 45px 7%;
+            }
+
+            .menu {
+                padding: 42px 7%;
+            }
+
+            .contact {
+                padding: 45px 7%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="#home">
+            NOIR <span>CAFÉ</span>
+        </a>
+
+        <nav aria-label="منوی اصلی">
+            <a href="#home">خانه</a>
+            <a href="#about">درباره کافه</a>
+            <a href="#menu">منوی کافه</a>
+            <a href="#contact">تماس با ما</a>
+        </nav>
+    </header>
+
+    <div class="gold-line"></div>
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <p class="eyebrow">
+                    به دنیای NOIR CAFÉ خوش آمدید
+                </p>
+
+                <h1>
+                    عطر قهوه،
+                    <br>
+                    <span>آرامش هر روز</span>
+                </h1>
+
+                <p class="hero-description">
+                    گاهی برای بهتر شدن یک روز، فقط به یک فنجان قهوه
+                    و چند دقیقه آرامش نیاز داریم.
+                    در NOIR CAFÉ، سادگی و عطر دلنشین قهوه
+                    بخشی از لحظه‌های شماست.
+                </p>
+
+                <a class="hero-button" href="#menu">
+                    آشنایی با منوی کافه
+                </a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+                    alt="فضای گرم و دلنشین یک کافه"
+                    fetchpriority="high"
+                >
+            </div>
+
+        </section>
+
+        <div class="section-line"></div>
+
+        <section class="about" id="about">
+
+            <span class="section-label">داستان ما</span>
+
+            <h2>جایی برای مکث کردن</h2>
+
+            <p>
+                NOIR CAFÉ یک مفهوم ساده دارد:
+                ساختن فضایی برای فاصله گرفتن از شلوغی روزمره.
+                از اولین عطر قهوه تا آخرین لحظه‌ی حضور شما،
+                همه‌چیز درباره‌ی لذت بردن از لحظه‌های کوچک زندگی است.
+            </p>
+
+        </section>
+
+        <div class="gold-line"></div>
+
+        <section class="menu" id="menu">
+
+            <div class="menu-heading">
+                <span class="section-label">انتخاب‌های کافه</span>
+                <h2>منوی پیشنهادی</h2>
+            </div>
+
+            <ul class="menu-list">
+
+                <li>
+                    <div class="item-name">
+                        اسپرسو
+                        <span class="item-description">
+                            قهوه‌ای غلیظ با عطر ماندگار
+                        </span>
+                    </div>
+                    <span class="item-price">۱۲۰ هزار تومان</span>
+                </li>
+
+                <li>
+                    <div class="item-name">
+                        آمریکانو
+                        <span class="item-description">
+                            انتخابی ساده برای دوست‌داران قهوه
+                        </span>
+                    </div>
+                    <span class="item-price">۱۴۰ هزار تومان</span>
+                </li>
+
+                <li>
+                    <div class="item-name">
+                        کاپوچینو
+                        <span class="item-description">
+                            ترکیب قهوه و شیر با فوم لطیف
+                        </span>
+                    </div>
+                    <span class="item-price">۱۷۰ هزار تومان</span>
+                </li>
+
+                <li>
+                    <div class="item-name">
+                        لاته
+                        <span class="item-description">
+                            طعمی ملایم برای لحظه‌های آرام
+                        </span>
+                    </div>
+                    <span class="item-price">۱۸۰ هزار تومان</span>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <div class="section-line"></div>
+
+        <section class="contact" id="contact">
+
+            <span class="section-label">منتظر دیدار شما هستیم</span>
+
+            <h2>با ما در ارتباط باشید</h2>
+
+            <p>
+                آدرس: تهران، خیابان نمونه، پلاک ۱۲
+            </p>
+
+            <p>
+                تلفن:
+                <a href="tel:+982100000000">
+                    ۰۲۱-۰۰۰۰۰۰۰۰
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <div class="gold-line"></div>
+
+    <footer>
+        <p>NOIR CAFÉ | یک تجربه‌ی ساده و دلنشین</p>
+        <p> NOIR CAFÉ</p>
+    </footer>
+
+</body>
+</html>

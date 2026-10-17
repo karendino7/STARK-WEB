@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FUTURE TECH | تسلا رودستر</title>
+    <meta name="description" content="معرفی تسلا رودستر و بررسی فناوری خودروهای آینده در FUTURE TECH">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #101317;
+            --background-light: #20252c;
+            --text: #f5f7fa;
+            --muted: #b7c0cc;
+            --silver: #dce2e9;
+            --silver-light: #ffffff;
+            --silver-dark: #818c99;
+            --line: #414954;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 0%,
+                    #454d58 0%,
+                    #252b33 32%,
+                    #15191e 65%,
+                    #0c0f13 100%
+                );
+
+            color: var(--text);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+        }
+
+        /* سربرگ */
+
+        header {
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+            background: rgba(10, 13, 17, 0.45);
+        }
+
+        .logo {
+            direction: ltr;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #aeb8c4,
+                #eef2f6,
+                #858f9c
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* خط متالیک */
+
+        .color-line {
+            height: 2px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #7d8998,
+                #ffffff,
+                #aab5c2,
+                transparent
+            );
+
+            box-shadow: 0 0 12px rgba(210, 220, 235, 0.2);
+        }
+
+        /* محتوای اصلی */
+
+        main {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 45px 25px;
+            flex: 1;
+        }
+
+        .intro {
+            padding: 20px 0 38px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin-bottom: 15px;
+            color: #cbd4df;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5vw, 46px);
+            line-height: 1.8;
+            font-weight: 800;
+        }
+
+        h1 span {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #bfc8d2,
+                #edf1f5,
+                #9ca7b4
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            max-width: 650px;
+            margin: 18px auto 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.5;
+        }
+
+        /* عکس خودرو */
+
+        .car-photo {
+            margin: 30px 0 40px;
+            text-align: center;
+        }
+
+        .car-photo img {
+            display: block;
+            width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            margin: 0 auto;
+
+            filter: drop-shadow(
+                0 20px 30px rgba(0, 0, 0, 0.55)
+            );
+
+            transition: transform 0.35s ease;
+        }
+
+        .car-photo img:hover {
+            transform: scale(1.02);
+        }
+
+        .car-photo figcaption {
+            margin-top: 15px;
+            color: #c3ccd7;
+            font-size: 12px;
+        }
+
+        /* مقاله */
+
+        .article {
+            padding: 30px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .article h2 {
+            margin-bottom: 15px;
+            font-size: 23px;
+            line-height: 1.9;
+        }
+
+        .article p {
+            margin-top: 13px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.5;
+        }
+
+        .article h3 {
+            margin-top: 28px;
+            color: var(--silver);
+            font-size: 18px;
+        }
+
+        /* اطلاعات مقاله */
+
+        .details {
+            padding: 32px 0;
+        }
+
+        .details h2 {
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        .details p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2.5;
+        }
+
+        .details strong {
+            color: var(--silver-light);
+        }
+
+        .note {
+            margin-top: 22px;
+            padding-right: 14px;
+            border-right: 2px solid var(--silver-dark);
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 2.3;
+        }
+
+        /* پابرگ */
+
+        footer {
+            padding: 22px 15px;
+            border-top: 1px solid var(--line);
+            background: rgba(10, 13, 17, 0.5);
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        footer span {
+            color: var(--silver);
+            font-weight: 700;
+        }
+
+        /* نمایش در موبایل */
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 15px;
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .description,
+            .article p,
+            .details p {
+                font-size: 13px;
+            }
+
+            .article h2 {
+                font-size: 20px;
+            }
+
+            .article h3 {
+                font-size: 16px;
+            }
+
+            .car-photo img {
+                max-height: 300px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .car-photo img {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            FUTURE <span>TECH</span>
+        </div>
+    </header>
+
+    <div class="color-line"></div>
+
+    <main>
+
+        <section class="intro">
+
+            <p class="eyebrow">
+                اخبار دنیای فناوری و خودرو
+            </p>
+
+            <h1>
+                تسلا رودستر؛
+                <br>
+                <span>مرز میان جاده و آسمان</span>
+            </h1>
+
+            <p class="description">
+                دنیای خودروهای آینده با سرعت در حال تغییر است.
+                تسلا رودستر یکی از پروژه‌های شناخته‌شده در حوزه
+                خودروهای برقی است که به دلیل طراحی و عملکرد مورد
+                انتظار خود، توجه علاقه‌مندان فناوری را جلب کرده است.
+            </p>
+
+        </section>
+
+        <div class="color-line"></div>
+
+        <!--
+            عکس خودت را کنار فایل index.html قرار بده.
+            نام فایل را در ویژگی src وارد کن.
+            مثال: src="tesla.jpg"
+        -->
+
+        <figure class="car-photo">
+
+            <img
+                src="images (3).jpg"
+                alt="تصویر خودروی تسلا رودستر"
+            >
+
+            <figcaption>
+                TESLA ROADSTER | نگاهی به خودروهای آینده
+            </figcaption>
+
+        </figure>
+
+        <article class="article">
+
+            <h2>خودرویی با نگاهی به آینده</h2>
+
+            <p>
+                ایلان ماسک و شرکت تسلا از نام‌های شناخته‌شده
+                در صنعت خودروهای برقی هستند. رودستر نیز یکی از
+                پروژه‌های مطرح این شرکت است که علاقه‌مندان خودرو
+                و فناوری اخبار مربوط به آن را دنبال می‌کنند.
+            </p>
+
+            <p>
+                ایده‌ی اضافه کردن قابلیت‌های پروازی به خودروها
+                سال‌هاست در دنیای فناوری مطرح می‌شود. با این حال،
+                ساخت وسیله‌ای که بتواند به شکل ایمن از زمین بلند شود،
+                به فناوری مهندسی پیشرفته و رعایت قوانین مربوط نیاز دارد.
+            </p>
+
+            <h3>آیا خودرو واقعاً می‌تواند پرواز کند؟</h3>
+
+            <p>
+                برای بررسی هر خبر درباره‌ی قابلیت پرواز یک خودرو،
+                باید مشخص شود که با یک نمایش آزمایشی، نمونه‌ی مهندسی
+                یا محصول آماده‌ی استفاده روبه‌رو هستیم.
+                حرکت کوتاه در هوا به‌تنهایی به معنی امکان پرواز
+                عادی و طولانی مانند هواپیما نیست.
+            </p>
+
+            <h3>آینده‌ی خودروهای پیشرفته</h3>
+
+            <p>
+                پیشرفت در باتری‌ها، موتورهای برقی و سامانه‌های
+                کنترل می‌تواند راه‌های تازه‌ای برای جابه‌جایی ایجاد کند.
+                با این حال، جزئیات هر قابلیت جدید باید با اطلاعات رسمی
+                سازنده و گزارش‌های معتبر بررسی شود.
+            </p>
+
+        </article>
+
+        <section class="details">
+
+            <h2>درباره این مقاله</h2>
+
+            <p>
+                <strong>موضوع:</strong>
+                خودروهای آینده و فناوری حمل‌ونقل
+            </p>
+
+            <p>
+                <strong>شخصیت محوری:</strong>
+                ایلان ماسک
+            </p>
+
+            <p>
+                <strong>نوع صفحه:</strong>
+                معرفی و مقاله‌ی فناوری
+            </p>
+
+            <div class="note">
+                این صفحه یک نمونه‌کار نمایشی طراحی‌شده توسط STARK WEB است.
+                پیش از انتشار هر خبر درباره‌ی قابلیت پرواز تسلا رودستر،
+                جزئیات آن را با منابع رسمی و گزارش‌های معتبر تطبیق بده.
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="color-line"></div>
+
+ 
+
+</body>
+</html>
