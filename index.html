@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -7,8 +8,11 @@
 
     <title>STARK WEB</title>
 
-    <meta name="description"
-        content="STARK WEB - طراحی سایت حرفه‌ای، مدرن و واکنش‌گرا برای کسب‌وکارها">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <meta name="description" content="STARK WEB - طراحی سایت حرفه‌ای، مدرن و واکنش‌گرا برای کسب‌وکارها">
 
     <style>
         * {
@@ -26,7 +30,6 @@
             background: #050914;
             color: white;
             overflow-x: hidden;
-     
         }
 
         /* ================= BACKGROUND ================= */
@@ -227,7 +230,7 @@
             transform: translateY(-4px);
         }
 
-        /* ================= HERO CARD ================= */
+        /* ================= HERO LOGO ANIMATION ================= */
 
         .hero-card {
             width: 420px;
@@ -236,67 +239,62 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .circle {
-            width: 320px;
-            height: 320px;
-            border: 1px solid rgba(22,136,255,.35);
-            border-radius: 50%;
-            position: absolute;
-            animation: rotate 15s linear infinite;
-        }
-
-        .circle::before,
-        .circle::after {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #1688ff;
-            border-radius: 50%;
-            box-shadow: 0 0 25px #1688ff;
-        }
-
-        .circle::before {
-            top: 20px;
-            left: 80px;
-        }
-
-        .circle::after {
-            bottom: 20px;
-            right: 70px;
+            perspective: 1000px;
+            flex-shrink: 0;
         }
 
         .hero-logo {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #102d55, #07101f 65%);
-            border: 1px solid rgba(22,136,255,.45);
-            box-shadow:
-                0 0 50px rgba(22,136,255,.2),
-                inset 0 0 50px rgba(22,136,255,.08);
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Arial;
-            font-size: 36px;
-            font-weight: 900;
-            letter-spacing: 3px;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: starkLogoRotate 8s infinite linear;
         }
 
         .hero-logo span {
-            color: #1688ff;
+            display: block;
+            white-space: nowrap;
+            font-family: 'Orbitron', 'Arial', sans-serif;
+            font-size: clamp(30px, 4.5vw, 58px);
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #eaf8ff;
+            text-shadow:
+                0 0 5px #00aaff,
+                0 0 15px #0088ff,
+                0 0 35px #0055ff,
+                0 0 60px rgba(0, 119, 255, .55);
+            transform: translateZ(0);
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            width: 85%;
+            height: 2px;
+            left: 7.5%;
+            bottom: 105px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #0077ff,
+                #00e5ff,
+                #0077ff,
+                transparent
+            );
+            box-shadow: 0 0 15px #008cff;
+            pointer-events: none;
+        }
 
+        @keyframes starkLogoRotate {
+            from {
+                transform: rotateY(0deg);
+            }
             to {
-                transform: rotate(360deg);
+                transform: rotateY(360deg);
             }
         }
 
@@ -609,15 +607,13 @@
                 height: 300px;
             }
 
-            .circle {
-                width: 240px;
-                height: 240px;
+            .hero-logo span {
+                font-size: 30px;
+                letter-spacing: 2px;
             }
 
-            .hero-logo {
-                width: 165px;
-                height: 165px;
-                font-size: 27px;
+            .hero-card::after {
+                bottom: 65px;
             }
 
             section {
@@ -663,138 +659,140 @@
             .hero-card {
                 transform: scale(.9);
             }
-               .login-card {
-        padding: 30px 22px;
-    }
+
+            .login-card {
+                padding: 30px 22px;
+            }
         }
-        
-.description {
-    color: #96a6c3;
-    font-size: 13px;
-    line-height: 2;
-    margin-bottom: 28px;
-}
 
-.input-box {
-    position: relative;
-    margin-bottom: 18px;
-}
+        .description {
+            color: #96a6c3;
+            font-size: 13px;
+            line-height: 2;
+            margin-bottom: 28px;
+        }
 
-input {
-    width: 100%;
-    height: 55px;
-    padding: 0 45px 0 45px;
-    color: white;
-    background: #080f1d;
-    border: 1px solid #263c60;
-    border-radius: 12px;
-    outline: none;
-    font-family: inherit;
-    font-size: 14px;
-    text-align: right;
-    transition: 0.25s;
-}
+        .input-box {
+            position: relative;
+            margin-bottom: 18px;
+        }
 
-input:focus {
-    border-color: #3984ff;
-    box-shadow: 0 0 16px #1769e033;
-}
+        input {
+            width: 100%;
+            height: 55px;
+            padding: 0 45px 0 45px;
+            color: white;
+            background: #080f1d;
+            border: 1px solid #263c60;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 14px;
+            text-align: right;
+            transition: 0.25s;
+        }
 
-input::placeholder {
-    color: #71819e;
-}
+        input:focus {
+            border-color: #3984ff;
+            box-shadow: 0 0 16px #1769e033;
+        }
 
-.key-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 19px;
-}
+        input::placeholder {
+            color: #71819e;
+        }
 
-.eye-button {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    color: #91a9ce;
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-    padding: 8px;
-}
+        .key-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 19px;
+        }
 
-.submit-button {
-    width: 100%;
-    height: 54px;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    background: linear-gradient(100deg, #1769e0, #3984ff);
-    font-size: 15px;
-    font-weight: bold;
-    font-family: inherit;
-    cursor: pointer;
-    box-shadow: 0 6px 22px #1769e044;
-    transition: 0.25s;
-}
+        .eye-button {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: #91a9ce;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            padding: 8px;
+        }
 
-.submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px #1769e077;
-    filter: brightness(1.12);
-}
+        .submit-button {
+            width: 100%;
+            height: 54px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            background: linear-gradient(100deg, #1769e0, #3984ff);
+            font-size: 15px;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 6px 22px #1769e044;
+            transition: 0.25s;
+        }
 
-#message {
-    min-height: 22px;
-    font-size: 12px;
-    color: #ff7777;
-    margin-top: 16px;
-}
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px #1769e077;
+            filter: brightness(1.12);
+        }
 
-.login-card {
-    width: 100%;
-    max-width: 410px;
-    padding: 38px 28px;
-    text-align: center;
-    background: rgba(12, 20, 37, 0.94);
-    border: 1px solid rgba(57, 132, 255, 0.45);
-    border-radius: 24px;
-    box-shadow:
-        0 0 35px rgba(0, 102, 255, 0.12),
-        inset 0 0 25px rgba(0, 102, 255, 0.035);
-    animation: appear 0.7s ease;
-}
-a {
-    text-decoration: none;
-    color:white;
-}
+        #message {
+            min-height: 22px;
+            font-size: 12px;
+            color: #ff7777;
+            margin-top: 16px;
+        }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .login-card {
+            width: 100%;
+            max-width: 410px;
+            padding: 38px 28px;
+            text-align: center;
+            background: rgba(12, 20, 37, 0.94);
+            border: 1px solid rgba(57, 132, 255, 0.45);
+            border-radius: 24px;
+            box-shadow:
+                0 0 35px rgba(0, 102, 255, 0.12),
+                inset 0 0 25px rgba(0, 102, 255, 0.035);
+            animation: appear 0.7s ease;
+        }
 
-.lock-icon {
-    width: 75px;
-    height: 75px;
-    margin: 0 auto 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 22px;
-    background: linear-gradient(145deg, #163c79, #07152d);
-    border: 1px solid #3984ff;
-    box-shadow: 0 0 25px #1769e055;
-    font-size: 34px;
-}
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lock-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #163c79, #07152d);
+            border: 1px solid #3984ff;
+            box-shadow: 0 0 25px #1769e055;
+            font-size: 34px;
+        }
     </style>
 </head>
 
@@ -841,7 +839,6 @@ a {
 
     </header>
 
-
     <!-- ================= HERO ================= -->
 
     <main id="home">
@@ -880,19 +877,17 @@ a {
 
             </div>
 
+            <!-- لوگوی سه‌بعدی جدید -->
 
             <div class="hero-card">
 
-                <div class="circle"></div>
-
                 <div class="hero-logo">
-                    WEB<span>STARK</span>
+                    <span>STARK WEB</span>
                 </div>
 
             </div>
 
         </section>
-
 
         <!-- ================= SERVICES ================= -->
 
@@ -912,7 +907,6 @@ a {
 
             </div>
 
-
             <div class="services">
 
                 <div class="service-card">
@@ -930,7 +924,6 @@ a {
 
                 </div>
 
-
                 <div class="service-card">
 
                     <div class="service-icon">◈</div>
@@ -945,7 +938,6 @@ a {
                     </p>
 
                 </div>
-
 
                 <div class="service-card">
 
@@ -966,7 +958,6 @@ a {
 
         </section>
 
-
         <!-- ================= WHY ================= -->
 
         <section id="why">
@@ -981,7 +972,6 @@ a {
 
             </div>
 
-
             <div class="why">
 
                 <div class="why-card">
@@ -994,7 +984,6 @@ a {
 
                 </div>
 
-
                 <div class="why-card">
 
                     <strong>24/7</strong>
@@ -1004,7 +993,6 @@ a {
                     </p>
 
                 </div>
-
 
                 <div class="why-card">
 
@@ -1019,7 +1007,6 @@ a {
             </div>
 
         </section>
-
 
         <!-- ================= PRICING ================= -->
 
@@ -1039,7 +1026,6 @@ a {
 
             </div>
 
-
             <div class="pricing">
 
                 <div class="price-card">
@@ -1052,9 +1038,11 @@ a {
                         1.500 میلیون
                         <small>تومان</small>
                     </div>
+
                     <div class="header-btn">
-<a href="paye.html">نمونه کار</a>
-</div>
+                        <a href="paye.html">نمونه کار</a>
+                    </div>
+
                     <ul class="features">
 
                         <li>طراحی اختصاصی</li>
@@ -1070,7 +1058,6 @@ a {
 
                 </div>
 
-
                 <div class="price-card">
 
                     <h3>
@@ -1081,9 +1068,11 @@ a {
                         3 میلیون
                         <small>تومان</small>
                     </div>
+
                     <div class="header-btn">
-<a href="nime pishrafte.html">نمونه کار</a>
-</div>
+                        <a href="nime pishrafte.html">نمونه کار</a>
+                    </div>
+
                     <ul class="features">
 
                         <li>موارد پایه</li>
@@ -1098,6 +1087,7 @@ a {
                     </a>
 
                 </div>
+
                 <div class="price-card featured">
 
                     <div class="popular">
@@ -1112,17 +1102,17 @@ a {
                         6 میلیون
                         <small>تومان</small>
                     </div>
+
                     <div class="header-btn">
-<a href="https://karendino7.github.io/WILDWORLD/">نمونه کار</a>
-</div>
+                        <a href="https://karendino7.github.io/WILDWORLD/">نمونه کار</a>
+                    </div>
+
                     <ul class="features">
 
                         <li>موارد پایه و نیمه پیشرفته</li>
                         <li>پس زمینه ی فیلم دار</li>
                         <li>انیمیشن و افکت</li>
                         <li>چند صفحه</li>
-                        
-                        
 
                     </ul>
 
@@ -1130,24 +1120,24 @@ a {
                         سفارش
                     </a>
 
-
                 </div>
-      
-
 
             </div>
 
         </section>
-        
+
         <section id="pricing">
+
             <div class="section-title">
                 <h2>دامنه ها برای سایت(مهم)</h2>
                 <p>با دامنه اجازه بده مردم سایتت رو انلاین ببینن</p>
             </div>
-            <div class="pricing">
-   <div class="price-card featured">
 
-                 <div class="popular">
+            <div class="pricing">
+
+                <div class="price-card featured">
+
+                    <div class="popular">
                         پیشنهاد ما
                     </div>
 
@@ -1161,9 +1151,6 @@ a {
                     </div>
 
                     <ul class="features">
-
-                        
-
                     </ul>
 
                     <a href="#contact" class="price-btn">
@@ -1171,55 +1158,47 @@ a {
                     </a>
 
                 </div>
-                   <div class="price-card featured">
 
-                <div class="popular">
+                <div class="price-card featured">
+
+                    <div class="popular">
                         ویژه
                     </div>
 
                     <h3>
-                       به زودی
+                        به زودی
                     </h3>
 
                     <div class="price">
-                      
                     </div>
 
                     <ul class="features">
-
-                        
-
                     </ul>
 
-                   
-
                 </div>
-                  <div class="price-card featured">
 
-               <div class="popular">
+                <div class="price-card featured">
+
+                    <div class="popular">
                         ویژه
                     </div>
 
                     <h3>
-                       به زودی
+                        به زودی
                     </h3>
 
                     <div class="price">
-                        
                     </div>
 
                     <ul class="features">
-
-                        
-
                     </ul>
 
-                    
-
                 </div>
-</div>
 
-</section>
+            </div>
+
+        </section>
+
         <!-- ================= CTA ================= -->
 
         <section id="contact">
@@ -1234,104 +1213,124 @@ a {
                     اولین قدم برای حرفه‌ای‌تر دیده شدن،
                     داشتن یک سایت حرفه‌ای است.
                 </p>
-            <p>برای سفارش سایت لطفا جزیاتی مثل رنگ پس زمینه،رنگ خط ها و غیره چی باشند</p>
-           <p>برای سفارش و نمونه کارها و پشتیبانی لطفا به شماره زیر در بله یا واتسپ پیام دهید</p>
-<h2>09376163920</h2>
+
+                <p>
+                    برای سفارش سایت لطفا جزیاتی مثل رنگ پس زمینه،رنگ خط ها و غیره چی باشند
+                </p>
+
+                <p>
+                    برای سفارش و نمونه کارها و پشتیبانی لطفا به شماره زیر در بله یا واتسپ پیام دهید
+                </p>
+
+                <h2>09376163920</h2>
+
             </div>
 
         </section>
 
     </main>
-<div class="login-card">
 
-    <div class="lock-icon">🔐</div>
+    <div class="login-card">
 
-    <div class="logo">STARK WEB</div>
+        <div class="lock-icon">🔐</div>
 
-    <h1>بخش خصوصی دوستان</h1>
+        <div class="logo">STARK WEB</div>
 
-    <p class="description">
-        به فضای اختصاصی STARK خوش آمدی.<br>
-        برای ادامه، رمز عبور خود را وارد کن.
-    </p>
+        <h1>بخش خصوصی دوستان</h1>
 
-    <form id="loginForm">
+        <p class="description">
+            به فضای اختصاصی STARK خوش آمدی.<br>
+            برای ادامه، رمز عبور خود را وارد کن.
+        </p>
 
-        <div class="input-box">
-            <span class="key-icon">🔑</span>
+        <form id="loginForm">
 
-            <input
-                type="password"
-                id="password"
-                placeholder="رمز عبور اختصاصی"
-                autocomplete="current-password"
-                required
-            >
+            <div class="input-box">
 
-            <button
-                type="button"
-                class="eye-button"
-                id="togglePassword"
-                aria-label="نمایش رمز عبور"
-            >◉</button>
+                <span class="key-icon">🔑</span>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="رمز عبور اختصاصی"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="eye-button"
+                    id="togglePassword"
+                    aria-label="نمایش رمز عبور"
+                >◉</button>
+
+            </div>
+
+            <button type="submit" class="submit-button">
+                ورود به بخش خصوصی ←
+            </button>
+
+        </form>
+
+        <div id="message" role="status" aria-live="polite"></div>
+
+        <div class="footer">
+            STARK WEB • PRIVATE ACCESS
         </div>
 
-        <button type="submit" class="submit-button">
-            ورود به بخش خصوصی ←
-        </button>
-
-    </form>
-
-    <div id="message" role="status" aria-live="polite"></div>
-
-    <div class="footer">
-        STARK WEB • PRIVATE ACCESS
     </div>
-
-</div>
 
     <!-- ================= FOOTER ================= -->
 
     <footer>
 
-        
         <strong>STARK WEB</strong>
         — تمامی حقوق محفوظ است.
 
     </footer>
 
-
     <!-- ================= JAVASCRIPT ================= -->
 
     <script>
-const form = document.getElementById("loginForm");
-const passwordInput = document.getElementById("password");
-const toggleButton = document.getElementById("togglePassword");
-const message = document.getElementById("message");
 
-toggleButton.addEventListener("click", function () {
-    const hidden = passwordInput.type === "password";
+        const form = document.getElementById("loginForm");
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.getElementById("togglePassword");
+        const message = document.getElementById("message");
 
-    passwordInput.type = hidden ? "text" : "password";
-    toggleButton.textContent = hidden ? "◎" : "◉";
-    toggleButton.setAttribute(
-        "aria-label",
-        hidden ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
-    );
-});
+        toggleButton.addEventListener("click", function () {
 
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
+            const hidden = passwordInput.type === "password";
 
-    // رمز آزمایشی؛ برای امنیت واقعی از بررسی سمت سرور استفاده کن.
-    if (passwordInput.value === "STARK2026") {
-        window.location.href = "a.html";
-    } else {
-        message.textContent = "رمز عبور اشتباه است!";
-        passwordInput.value = "";
-        passwordInput.focus();
-    }
-});
+            passwordInput.type = hidden ? "text" : "password";
+            toggleButton.textContent = hidden ? "◎" : "◉";
+
+            toggleButton.setAttribute(
+                "aria-label",
+                hidden ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+            );
+
+        });
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            // رمز آزمایشی؛ برای امنیت واقعی از بررسی سمت سرور استفاده کن.
+            if (passwordInput.value === "STARK2026") {
+
+                window.location.href = "a.html";
+
+            } else {
+
+                message.textContent = "رمز عبور اشتباه است!";
+                passwordInput.value = "";
+                passwordInput.focus();
+
+            }
+
+        });
+
         function toggleMenu() {
 
             const menu = document.getElementById("mobileMenu");
@@ -1340,7 +1339,6 @@ form.addEventListener("submit", function (event) {
 
         }
 
-
         function closeMenu() {
 
             const menu = document.getElementById("mobileMenu");
@@ -1348,7 +1346,6 @@ form.addEventListener("submit", function (event) {
             menu.classList.remove("active");
 
         }
-
 
         // بستن منو با کلیک بیرون
 
@@ -1371,5 +1368,5 @@ form.addEventListener("submit", function (event) {
     </script>
 
 </body>
-
 </html>
+
