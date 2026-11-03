@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بخش دوستان</title>
+        <link rel="icon" type="image/png" href="file_00000000830082109bb4c162270ee612.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+  body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #050914;
+    color: white;
+    overflow-x: hidden;
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+.login-card {
+    width: 100%;
+    max-width: 410px;
+    margin: auto;
+}
+
+        /* ================= BACKGROUND ================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: #087cff;
+            filter: blur(180px);
+            opacity: .12;
+            top: -250px;
+            right: -200px;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00b7ff;
+            filter: blur(180px);
+            opacity: .08;
+            bottom: -250px;
+            left: -200px;
+            pointer-events: none;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 7%;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 9, 20, .65);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .navbar {
+            max-width: 1250px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .logo span {
+            color: #1688ff;
+        }
+
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .desktop-menu a {
+            color: #d9e4f3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .desktop-menu a:hover {
+            color: #1688ff;
+        }
+
+        .header-btn {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #1688ff, #005eff);
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            box-shadow: 0 0 25px rgba(22,136,255,.25);
+            transition: .3s;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(22,136,255,.5);
+        }
+
+        /* ================= MOBILE MENU ================= */
+
+        .mobile-menu-btn {
+            display: none;
+            width: 43px;
+            height: 43px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.05);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            max-width: 1250px;
+            margin: auto;
+            padding: 160px 7% 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid rgba(22,136,255,.35);
+            border-radius: 50px;
+            background: rgba(22,136,255,.08);
+            color: #62b2ff;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 75px);
+            line-height: 1.15;
+            font-weight: 900;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #1688ff;
+            text-shadow: 0 0 35px rgba(22,136,255,.35);
+        }
+
+        .hero p {
+            color: #aebbd0;
+            font-size: 17px;
+            line-height: 2;
+            max-width: 570px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            text-decoration: none;
+            padding: 15px 27px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #1688ff, #005eff);
+            color: white;
+            box-shadow: 0 10px 35px rgba(0,96,255,.25);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(0,96,255,.4);
+        }
+
+        .secondary-btn {
+            border: 1px solid rgba(255,255,255,.12);
+            color: #dbe7f5;
+            background: rgba(255,255,255,.035);
+        }
+
+        .secondary-btn:hover {
+            border-color: #1688ff;
+            transform: translateY(-4px);
+        }
+
+        /* ================= HERO LOGO ANIMATION ================= */
+
+        .hero-card {
+            width: 420px;
+            height: 420px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            flex-shrink: 0;
+        }
+
+        .hero-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: starkLogoRotate 8s infinite linear;
+        }
+
+        .hero-logo span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            display: block;
+            white-space: nowrap;
+            font-size: clamp(30px, 4.5vw, 58px);
+            font-weight: 900;
+            color: #eaf8ff;
+            text-shadow:
+                0 0 5px #00aaff,
+                0 0 15px #0088ff,
+                0 0 35px #0055ff,
+                0 0 60px rgba(0, 119, 255, .55);
+            backface-visibility: hidden;
+        }
+
+        .hero-logo .front {
+            font-family: 'Orbitron', 'Arial', sans-serif;
+            letter-spacing: 4px;
+            transform: translate(-50%, -50%) translateZ(1px);
+        }
+
+        .hero-logo .back {
+            font-family: Tahoma, Arial, sans-serif;
+            letter-spacing: 0;
+            direction: rtl;
+            transform: translate(-50%, -50%) rotateY(180deg) translateZ(1px);
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            width: 85%;
+            height: 2px;
+            left: 7.5%;
+            bottom: 105px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #0077ff,
+                #00e5ff,
+                #0077ff,
+                transparent
+            );
+            box-shadow: 0 0 15px #008cff;
+            pointer-events: none;
+        }
+
+        @keyframes starkLogoRotate {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: #1688ff;
+            font-size: 14px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #8e9caf;
+            margin-top: 15px;
+        }
+
+        /* ================= SERVICES ================= */
+
+        .services {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,.07);
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.055),
+                rgba(255,255,255,.015)
+            );
+            border-radius: 20px;
+            transition: .35s;
+        }
+                .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(22,136,255,.45);
+            box-shadow: 0 20px 50px rgba(0,0,0,.25);
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(22,136,255,.1);
+            color: #1688ff;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 13px;
+            font-size: 20px;
+        }
+
+        .service-card p {
+            color: #8996aa;
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        /* ================= WHY US ================= */
+
+        .why {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+
+        .why-card strong {
+            display: block;
+            font-size: 34px;
+            color: #1688ff;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: #a2adbd;
+        }
+
+        /* ================= PRICING ================= */
+
+        .pricing {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .price-card {
+            position: relative;
+            padding: 35px;
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.06),
+                rgba(255,255,255,.02)
+            );
+            border: 1px solid rgba(255,255,255,.08);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .price-card.featured {
+            border-color: #1688ff;
+            box-shadow: 0 0 45px rgba(22,136,255,.12);
+            transform: scale(1.03);
+        }
+
+        .popular {
+            position: absolute;
+            top: -13px;
+            right: 50%;
+            transform: translateX(50%);
+            background: #1688ff;
+            color: white;
+            padding: 6px 17px;
+            border-radius: 50px;
+            font-size: 12px;
+        }
+
+        .price-card h3 {
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            font-size: 35px;
+            font-weight: 900;
+            color: #1688ff;
+            margin-bottom: 25px;
+        }
+
+        .price small {
+            font-size: 13px;
+            color: #8d99ab;
+        }
+
+        .features {
+            list-style: none;
+            text-align: right;
+            margin-bottom: 28px;
+        }
+
+        .features li {
+            padding: 9px 0;
+            color: #aeb9c9;
+            font-size: 14px;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #1688ff;
+            margin-left: 8px;
+        }
+
+        .price-btn {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: #1688ff;
+            padding: 13px;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        .price-btn:hover {
+            background: #006cff;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            max-width: 1100px;
+            margin: 50px auto 100px;
+            padding: 65px 30px;
+            text-align: center;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at center,
+                rgba(22,136,255,.2),
+                rgba(22,136,255,.03) 55%,
+                transparent 75%);
+            border: 1px solid rgba(22,136,255,.2);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #9daabd;
+            margin-bottom: 30px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 35px 7%;
+            text-align: center;
+            color: #667286;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #1688ff;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            header {
+                padding: 14px 5%;
+            }
+
+            .desktop-menu,
+            .header-btn {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 75px;
+                right: 5%;
+                left: 5%;
+                padding: 15px;
+                border-radius: 18px;
+                background: rgba(8,14,27,.96);
+                border: 1px solid rgba(255,255,255,.08);
+                backdrop-filter: blur(20px);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 15px;
+                color: white;
+                text-decoration: none;
+                border-radius: 10px;
+            }
+
+            .mobile-menu a:hover {
+                background: rgba(22,136,255,.1);
+                color: #1688ff;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 130px 6% 70px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-logo span {
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .hero-card::after {
+                bottom: 65px;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .services,
+            .pricing,
+            .why {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* گوشی‌های خیلی کوچک */
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+            .hero-card {
+                transform: scale(.9);
+            }
+
+            .login-card {
+                padding: 30px 22px;
+            }
+        }
+
+        .description {
+            color: #96a6c3;
+            font-size: 13px;
+            line-height: 2;
+            margin-bottom: 28px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        input {
+            width: 100%;
+            height: 55px;
+            padding: 0 45px 0 45px;
+            color: white;
+            background: #080f1d;
+            border: 1px solid #263c60;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 14px;
+            text-align: right;
+            transition: 0.25s;
+        }
+
+        input:focus {
+            border-color: #3984ff;
+            box-shadow: 0 0 16px #1769e033;
+        }
+
+        input::placeholder {
+            color: #71819e;
+        }
+
+        .key-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 19px;
+        }
+
+        .eye-button {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: #91a9ce;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            padding: 8px;
+        }
+
+        .submit-button {
+            width: 100%;
+            height: 54px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            background: linear-gradient(100deg, #1769e0, #3984ff);
+            font-size: 15px;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 6px 22px #1769e044;
+            transition: 0.25s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px #1769e077;
+            filter: brightness(1.12);
+        }
+
+        #message {
+            min-height: 22px;
+            font-size: 12px;
+            color: #ff7777;
+            margin-top: 16px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 410px;
+            padding: 38px 28px;
+            text-align: center;
+            background: rgba(12, 20, 37, 0.94);
+            border: 1px solid rgba(57, 132, 255, 0.45);
+            border-radius: 24px;
+            box-shadow:
+                0 0 35px rgba(0, 102, 255, 0.12),
+                inset 0 0 25px rgba(0, 102, 255, 0.035);
+            animation: appear 0.7s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lock-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #163c79, #07152d);
+            border: 1px solid #3984ff;
+            box-shadow: 0 0 25px #1769e055;
+            font-size: 34px;
+        }
+    </style>
+</head>
+<body>
+        <div class="login-card">
+
+        <div class="lock-icon">🔐</div>
+
+        <div class="logo">STARK WEB</div>
+
+        <h1>بخش خصوصی دوستان</h1>
+
+        <p class="description">
+            به فضای اختصاصی STARK خوش آمدی.<br>
+            برای ادامه، رمز عبور خود را وارد کن.
+        </p>
+
+        <form id="loginForm">
+
+            <div class="input-box">
+
+                <span class="key-icon">🔑</span>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="رمز عبور اختصاصی"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="eye-button"
+                    id="togglePassword"
+                    aria-label="نمایش رمز عبور"
+                >◉</button>
+
+            </div>
+
+            <button type="submit" class="submit-button">
+                ورود به بخش خصوصی ←
+            </button>
+
+        </form>
+
+        <div id="message" role="status" aria-live="polite"></div>
+
+        <div class="footer">
+            STARK WEB • PRIVATE ACCESS
+        </div>
+
+    </div>
+    <script>
+            const form = document.getElementById("loginForm");
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.getElementById("togglePassword");
+        const message = document.getElementById("message");
+
+        toggleButton.addEventListener("click", function () {
+
+            const hidden = passwordInput.type === "password";
+
+            passwordInput.type = hidden ? "text" : "password";
+            toggleButton.textContent = hidden ? "◎" : "◉";
+
+            toggleButton.setAttribute(
+                "aria-label",
+                hidden ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+            );
+
+        });
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            // رمز آزمایشی؛ برای امنیت واقعی از بررسی سمت سرور استفاده کن.
+            if (passwordInput.value === "STARK2026") {
+
+                window.location.href = "a.html";
+
+            } else {
+
+                message.textContent = "رمز عبور اشتباه است!";
+                passwordInput.value = "";
+                passwordInput.focus();
+
+            }
+
+        });
+        </script>
+</body>
+</html>
