@@ -805,6 +805,54 @@
             box-shadow: 0 0 25px #1769e055;
             font-size: 34px;
         }
+        .hero-logo .back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hero-logo .back .logo-title,
+.hero-logo .back .logo-phone {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    white-space: nowrap;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.hero-logo .back .logo-title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.hero-logo .back .logo-phone {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    direction: ltr;
+    letter-spacing: 2px;
+}
+.hero-logo .front {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.hero-logo .front .web-box {
+    display: inline-block;
+    position: static;
+    transform: none;
+    border: 2px solid #1688ff;
+    background: transparent;
+    color: #eaf8ff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font: inherit;
+    text-shadow: inherit;
+}
     </style>
 </head>
 <body>
@@ -894,10 +942,14 @@
 
             <div class="hero-card">
 
-                <div class="hero-logo">
-                    <span class="front">STARK WEB</span>
-                    <span class="back">خرید سایت</span>
-                </div>
+              <div class="hero-logo">
+<span class="front">STARK <span class="web-box">WEB</span></span>
+
+    <span class="back">
+        <span class="logo-title">سفارش سایت</span>
+        <span class="logo-phone">09376163920</span>
+    </span>
+</div>
 
             </div>
 
