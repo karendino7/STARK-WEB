@@ -1,1388 +1,2433 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>STARK WEB</title>
-    <link rel="icon" type="image/png" href="file_00000000830082109bb4c162270ee612.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-
-    <meta name="description" content="STARK WEB - طراحی سایت حرفه‌ای، مدرن و واکنش‌گرا برای کسب‌وکارها">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #050914;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* ================= BACKGROUND ================= */
-
-        body::before {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: #087cff;
-            filter: blur(180px);
-            opacity: .12;
-            top: -250px;
-            right: -200px;
-            pointer-events: none;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #00b7ff;
-            filter: blur(180px);
-            opacity: .08;
-            bottom: -250px;
-            left: -200px;
-            pointer-events: none;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 18px 7%;
-            backdrop-filter: blur(18px);
-            background: rgba(5, 9, 20, .65);
-            border-bottom: 1px solid rgba(255,255,255,.06);
-        }
-
-        .navbar {
-            max-width: 1250px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-family: Arial, sans-serif;
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: white;
-        }
-
-        .logo span {
-            color: #1688ff;
-        }
-
-        .desktop-menu {
-            display: flex;
-            align-items: center;
-            gap: 35px;
-        }
-
-        .desktop-menu a {
-            color: #d9e4f3;
-            text-decoration: none;
-            font-size: 14px;
-            transition: .3s;
-        }
-
-        .desktop-menu a:hover {
-            color: #1688ff;
-        }
-
-        .header-btn {
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #1688ff, #005eff);
-            padding: 11px 22px;
-            border-radius: 10px;
-            font-size: 14px;
-            box-shadow: 0 0 25px rgba(22,136,255,.25);
-            transition: .3s;
-        }
-
-        .header-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(22,136,255,.5);
-        }
-
-        /* ================= MOBILE MENU ================= */
-
-        .mobile-menu-btn {
-            display: none;
-            width: 43px;
-            height: 43px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,.1);
-            background: rgba(255,255,255,.05);
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 100vh;
-            max-width: 1250px;
-            margin: auto;
-            padding: 160px 7% 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-        }
-
-        .hero-text {
-            max-width: 650px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid rgba(22,136,255,.35);
-            border-radius: 50px;
-            background: rgba(22,136,255,.08);
-            color: #62b2ff;
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 5vw, 75px);
-            line-height: 1.15;
-            font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #1688ff;
-            text-shadow: 0 0 35px rgba(22,136,255,.35);
-        }
-
-        .hero p {
-            color: #aebbd0;
-            font-size: 17px;
-            line-height: 2;
-            max-width: 570px;
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .primary-btn,
-        .secondary-btn {
-            text-decoration: none;
-            padding: 15px 27px;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .primary-btn {
-            background: linear-gradient(135deg, #1688ff, #005eff);
-            color: white;
-            box-shadow: 0 10px 35px rgba(0,96,255,.25);
-        }
-
-        .primary-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 45px rgba(0,96,255,.4);
-        }
-
-        .secondary-btn {
-            border: 1px solid rgba(255,255,255,.12);
-            color: #dbe7f5;
-            background: rgba(255,255,255,.035);
-        }
-
-        .secondary-btn:hover {
-            border-color: #1688ff;
-            transform: translateY(-4px);
-        }
-
-        /* ================= HERO LOGO ANIMATION ================= */
-
-        .hero-card {
-            width: 420px;
-            height: 420px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1000px;
-            flex-shrink: 0;
-        }
-
-        .hero-logo {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            animation: starkLogoRotate 8s infinite linear;
-        }
-
-        .hero-logo span {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            display: block;
-            white-space: nowrap;
-            font-size: clamp(30px, 4.5vw, 58px);
-            font-weight: 900;
-            color: #eaf8ff;
-            text-shadow:
-                0 0 5px #00aaff,
-                0 0 15px #0088ff,
-                0 0 35px #0055ff,
-                0 0 60px rgba(0, 119, 255, .55);
-            backface-visibility: hidden;
-        }
-
-        .hero-logo .front {
-            font-family: 'Orbitron', 'Arial', sans-serif;
-            letter-spacing: 4px;
-            transform: translate(-50%, -50%) translateZ(1px);
-        }
-
-        .hero-logo .back {
-            font-family: Tahoma, Arial, sans-serif;
-            letter-spacing: 0;
-            direction: rtl;
-            transform: translate(-50%, -50%) rotateY(180deg) translateZ(1px);
-        }
-
-        .hero-card::after {
-            content: "";
-            position: absolute;
-            width: 85%;
-            height: 2px;
-            left: 7.5%;
-            bottom: 105px;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                #0077ff,
-                #00e5ff,
-                #0077ff,
-                transparent
-            );
-            box-shadow: 0 0 15px #008cff;
-            pointer-events: none;
-        }
-
-        @keyframes starkLogoRotate {
-            from {
-                transform: rotateY(0deg);
-            }
-            to {
-                transform: rotateY(360deg);
-            }
-        }
-
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 100px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title span {
-            color: #1688ff;
-            font-size: 14px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin-top: 10px;
-        }
-
-        .section-title p {
-            color: #8e9caf;
-            margin-top: 15px;
-        }
-
-        /* ================= SERVICES ================= */
-
-        .services {
-            max-width: 1250px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .service-card {
-            padding: 35px;
-            border: 1px solid rgba(255,255,255,.07);
-            background: linear-gradient(
-                145deg,
-                rgba(255,255,255,.055),
-                rgba(255,255,255,.015)
-            );
-            border-radius: 20px;
-            transition: .35s;
-        }
-                .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(22,136,255,.45);
-            box-shadow: 0 20px 50px rgba(0,0,0,.25);
-        }
-
-        .service-icon {
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            background: rgba(22,136,255,.1);
-            color: #1688ff;
-            font-size: 25px;
-            margin-bottom: 22px;
-        }
-
-        .service-card h3 {
-            margin-bottom: 13px;
-            font-size: 20px;
-        }
-
-        .service-card p {
-            color: #8996aa;
-            line-height: 1.9;
-            font-size: 14px;
-        }
-
-        /* ================= WHY US ================= */
-
-        .why {
-            max-width: 1050px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 35px 20px;
-            border-radius: 18px;
-            background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.06);
-        }
-
-        .why-card strong {
-            display: block;
-            font-size: 34px;
-            color: #1688ff;
-            margin-bottom: 10px;
-        }
-
-        .why-card p {
-            color: #a2adbd;
-        }
-
-        /* ================= PRICING ================= */
-
-        .pricing {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .price-card {
-            position: relative;
-            padding: 35px;
-            border-radius: 22px;
-            background: linear-gradient(
-                145deg,
-                rgba(255,255,255,.06),
-                rgba(255,255,255,.02)
-            );
-            border: 1px solid rgba(255,255,255,.08);
-            text-align: center;
-            transition: .3s;
-        }
-
-        .price-card.featured {
-            border-color: #1688ff;
-            box-shadow: 0 0 45px rgba(22,136,255,.12);
-            transform: scale(1.03);
-        }
-
-        .popular {
-            position: absolute;
-            top: -13px;
-            right: 50%;
-            transform: translateX(50%);
-            background: #1688ff;
-            color: white;
-            padding: 6px 17px;
-            border-radius: 50px;
-            font-size: 12px;
-        }
-
-        .price-card h3 {
-            font-size: 21px;
-            margin-bottom: 18px;
-        }
-
-        .price {
-            font-size: 35px;
-            font-weight: 900;
-            color: #1688ff;
-            margin-bottom: 25px;
-        }
-
-        .price small {
-            font-size: 13px;
-            color: #8d99ab;
-        }
-
-        .features {
-            list-style: none;
-            text-align: right;
-            margin-bottom: 28px;
-        }
-
-        .features li {
-            padding: 9px 0;
-            color: #aeb9c9;
-            font-size: 14px;
-        }
-
-        .features li::before {
-            content: "✓";
-            color: #1688ff;
-            margin-left: 8px;
-        }
-
-        .price-btn {
-            display: block;
-            text-decoration: none;
-            color: white;
-            background: #1688ff;
-            padding: 13px;
-            border-radius: 10px;
-            transition: .3s;
-        }
-
-        .price-btn:hover {
-            background: #006cff;
-        }
-
-        /* ================= CTA ================= */
-
-        .cta {
-            max-width: 1100px;
-            margin: 50px auto 100px;
-            padding: 65px 30px;
-            text-align: center;
-            border-radius: 30px;
-            background:
-                radial-gradient(circle at center,
-                rgba(22,136,255,.2),
-                rgba(22,136,255,.03) 55%,
-                transparent 75%);
-            border: 1px solid rgba(22,136,255,.2);
-        }
-
-        .cta h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            color: #9daabd;
-            margin-bottom: 30px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            border-top: 1px solid rgba(255,255,255,.06);
-            padding: 35px 7%;
-            text-align: center;
-            color: #667286;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #1688ff;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            header {
-                padding: 14px 5%;
-            }
-
-            .desktop-menu,
-            .header-btn {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .mobile-menu {
-                position: absolute;
-                top: 75px;
-                right: 5%;
-                left: 5%;
-                padding: 15px;
-                border-radius: 18px;
-                background: rgba(8,14,27,.96);
-                border: 1px solid rgba(255,255,255,.08);
-                backdrop-filter: blur(20px);
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .mobile-menu a {
-                display: block;
-                padding: 15px;
-                color: white;
-                text-decoration: none;
-                border-radius: 10px;
-            }
-
-            .mobile-menu a:hover {
-                background: rgba(22,136,255,.1);
-                color: #1688ff;
-            }
-
-            .hero {
-                min-height: auto;
-                padding: 130px 6% 70px;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text {
-                max-width: 100%;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-card {
-                width: 300px;
-                height: 300px;
-            }
-
-            .hero-logo span {
-                font-size: 30px;
-                letter-spacing: 2px;
-            }
-
-            .hero-card::after {
-                bottom: 65px;
-            }
-
-            section {
-                padding: 75px 6%;
-            }
-
-            .services,
-            .pricing,
-            .why {
-                grid-template-columns: 1fr;
-            }
-
-            .price-card.featured {
-                transform: none;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-
-            .cta h2 {
-                font-size: 28px;
-            }
-        }
-
-        /* گوشی‌های خیلی کوچک */
-
-        @media (max-width: 400px) {
-
-            .hero h1 {
-                font-size: 37px;
-            }
-
-            .hero p {
-                font-size: 14px;
-            }
-
-            .primary-btn,
-            .secondary-btn {
-                width: 100%;
-            }
-
-            .hero-card {
-                transform: scale(.9);
-            }
-
-            .login-card {
-                padding: 30px 22px;
-            }
-        }
-
-        .description {
-            color: #96a6c3;
-            font-size: 13px;
-            line-height: 2;
-            margin-bottom: 28px;
-        }
-
-        .input-box {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        input {
-            width: 100%;
-            height: 55px;
-            padding: 0 45px 0 45px;
-            color: white;
-            background: #080f1d;
-            border: 1px solid #263c60;
-            border-radius: 12px;
-            outline: none;
-            font-family: inherit;
-            font-size: 14px;
-            text-align: right;
-            transition: 0.25s;
-        }
-
-        input:focus {
-            border-color: #3984ff;
-            box-shadow: 0 0 16px #1769e033;
-        }
-
-        input::placeholder {
-            color: #71819e;
-        }
-
-        .key-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 19px;
-        }
-
-        .eye-button {
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            color: #91a9ce;
-            border: none;
-            cursor: pointer;
-            font-size: 17px;
-            padding: 8px;
-        }
-
-        .submit-button {
-            width: 100%;
-            height: 54px;
-            border: none;
-            border-radius: 12px;
-            color: white;
-            background: linear-gradient(100deg, #1769e0, #3984ff);
-            font-size: 15px;
-            font-weight: bold;
-            font-family: inherit;
-            cursor: pointer;
-            box-shadow: 0 6px 22px #1769e044;
-            transition: 0.25s;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px #1769e077;
-            filter: brightness(1.12);
-        }
-
-        #message {
-            min-height: 22px;
-            font-size: 12px;
-            color: #ff7777;
-            margin-top: 16px;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 410px;
-            padding: 38px 28px;
-            text-align: center;
-            background: rgba(12, 20, 37, 0.94);
-            border: 1px solid rgba(57, 132, 255, 0.45);
-            border-radius: 24px;
-            box-shadow:
-                0 0 35px rgba(0, 102, 255, 0.12),
-                inset 0 0 25px rgba(0, 102, 255, 0.035);
-            animation: appear 0.7s ease;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .lock-icon {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 22px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 22px;
-            background: linear-gradient(145deg, #163c79, #07152d);
-            border: 1px solid #3984ff;
-            box-shadow: 0 0 25px #1769e055;
-            font-size: 34px;
-        }
-        .hero-logo .back {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STARK WEB | سفارش طراحی سایت</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.hero-logo .back .logo-title,
-.hero-logo .back .logo-phone {
-    position: static;
-    left: auto;
-    top: auto;
-    transform: none;
-    display: block;
-    white-space: nowrap;
-    font-size: 32px;
-    font-weight: 900;
+:root{
+    --blue:#1677e8;
+    --dark:#102b4c;
+    --text:#202b3c;
+    --muted:#778398;
+    --bg:#f5f8fc;
+    --border:#e5eaf1;
+    --white:#fff;
 }
 
-.hero-logo .back .logo-title {
-    font-size: clamp(28px, 4vw, 48px);
-    font-family: Tahoma, Arial, sans-serif;
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
 }
 
-.hero-logo .back .logo-phone {
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-    direction: ltr;
-    letter-spacing: 2px;
-}
-.hero-logo .front {
-    direction: ltr;
-    unicode-bidi: isolate;
+body{
+    font-family:Vazirmatn,sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
 
-.hero-logo .front .web-box {
-    display: inline-block;
-    position: static;
-    transform: none;
-    border: 2px solid #1688ff;
-    background: transparent;
-    color: #eaf8ff;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font: inherit;
-    text-shadow: inherit;
+button,input,textarea{
+    font-family:inherit;
 }
-    </style>
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:1px solid var(--border);
+}
+
+.navbar{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    color:#142c4c;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:27px;
+    font-size:13px;
+    color:#56647a;
+}
+
+.nav-links a:hover{
+    color:var(--blue);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn{
+    border:0;
+    border-radius:8px;
+    padding:11px 19px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:var(--blue);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#0862c5;
+    transform:translateY(-2px);
+}
+
+.btn-light{
+    background:#edf5ff;
+    color:var(--blue);
+}
+
+/* HERO */
+
+.hero{
+    padding:75px 0 65px;
+    background:
+    radial-gradient(circle at 10% 20%,#d8eaff 0,transparent 30%),
+    linear-gradient(120deg,#f4f8ff,#fff 55%,#edf5ff);
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:50px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:#e7f2ff;
+    color:var(--blue);
+    border:1px solid #c9e0ff;
+    border-radius:30px;
+    padding:8px 15px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.hero h1{
+    font-size:clamp(30px,4vw,48px);
+    line-height:1.8;
+    margin:18px 0;
+    color:#142c4c;
+}
+
+.hero h1 span{
+    color:var(--blue);
+}
+
+.hero-description{
+    color:var(--muted);
+    font-size:14px;
+    line-height:2.4;
+    max-width:560px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:12px;
+    margin-top:27px;
+    flex-wrap:wrap;
+}
+
+.hero-actions .btn{
+    padding:14px 24px;
+}
+
+.hero-visual{
+    min-height:330px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#0c3261,#1677e8);
+    padding:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 25px 60px #1677e833;
+}
+
+.hero-visual:before{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:280px;
+    border:1px solid #ffffff30;
+    border-radius:50%;
+}
+
+.hero-visual:after{
+    content:"";
+    position:absolute;
+    width:210px;
+    height:210px;
+    border:1px solid #ffffff30;
+    border-radius:50%;
+}
+
+.visual-card{
+    position:relative;
+    z-index:2;
+    background:#ffffffee;
+    color:#17375c;
+    width:85%;
+    max-width:350px;
+    border-radius:15px;
+    padding:23px;
+    box-shadow:0 20px 40px #00152e40;
+}
+
+.visual-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    padding-bottom:14px;
+    margin-bottom:18px;
+}
+
+.visual-logo{
+    font-size:16px;
+    font-weight:800;
+}
+
+.visual-logo span{
+    color:var(--blue);
+}
+
+.visual-dot{
+    width:9px;
+    height:9px;
+    background:#22c987;
+    border-radius:50%;
+}
+
+.visual-title{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.visual-subtitle{
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.visual-lines{
+    display:grid;
+    gap:9px;
+}
+
+.visual-lines div{
+    height:9px;
+    background:#e8eef6;
+    border-radius:10px;
+}
+
+.visual-lines div:nth-child(2){
+    width:75%;
+}
+
+.visual-lines div:nth-child(3){
+    width:55%;
+}
+
+.visual-button{
+    background:var(--blue);
+    color:white;
+    text-align:center;
+    border-radius:7px;
+    padding:10px;
+    font-size:12px;
+    margin-top:20px;
+}
+
+.hero-stats{
+    display:flex;
+    gap:35px;
+    margin-top:35px;
+}
+
+.hero-stat strong{
+    display:block;
+    font-size:20px;
+    color:#17375c;
+}
+
+.hero-stat span{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* BENEFITS */
+
+.benefits{
+    background:white;
+    padding:25px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.benefit{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.benefit-icon{
+    width:45px;
+    height:45px;
+    flex-shrink:0;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:#eaf3ff;
+    color:var(--blue);
+    font-size:21px;
+}
+
+.benefit h3{
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.benefit p{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* GENERAL SECTION */
+
+.section{
+    padding:75px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:38px;
+}
+
+.section-heading .small-title{
+    color:var(--blue);
+    font-size:12px;
+    font-weight:800;
+}
+
+.section-heading h2{
+    font-size:27px;
+    color:#17375c;
+    margin:10px 0;
+}
+
+.section-heading p{
+    font-size:13px;
+    color:var(--muted);
+    line-height:2;
+}
+
+/* SERVICES */
+
+.services-section{
+    background:#f5f8fc;
+}
+
+.service-filters{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+}
+
+.filter-btn{
+    border:1px solid var(--border);
+    background:white;
+    padding:10px 19px;
+    border-radius:8px;
+    color:#65738a;
+    cursor:pointer;
+    font-size:12px;
+    transition:.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:var(--blue);
+    border-color:var(--blue);
+    color:white;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.service-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:13px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.service-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px #18375b12;
+    border-color:#a8ceff;
+}
+
+.service-image{
+    height:165px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    font-size:55px;
+    background:linear-gradient(140deg,#e4f1ff,#f4f8ff);
+}
+
+.service-image.business{
+    background:linear-gradient(140deg,#e5eeff,#f3f6ff);
+}
+
+.service-image.shop{
+    background:linear-gradient(140deg,#e4f8f4,#f2fbf9);
+}
+
+.service-image span{
+    position:absolute;
+    top:13px;
+    right:13px;
+    background:var(--blue);
+    color:white;
+    border-radius:5px;
+    padding:5px 10px;
+    font-size:10px;
+}
+
+.service-content{
+    padding:20px;
+}
+
+.service-content h3{
+    font-size:16px;
+    margin-bottom:9px;
+}
+
+.service-content p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:2;
+    min-height:48px;
+}
+
+.service-tags{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin:17px 0;
+}
+
+.service-tags span{
+    background:#f0f5fb;
+    color:#63758d;
+    font-size:10px;
+    padding:5px 9px;
+    border-radius:5px;
+}
+
+.service-bottom{
+    border-top:1px solid var(--border);
+    padding-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.service-bottom small{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.order-btn{
+    background:#eaf3ff;
+    color:var(--blue);
+    border:0;
+    padding:9px 16px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:12px;
+}
+
+.order-btn:hover{
+    background:var(--blue);
+    color:white;
+}
+
+/* ORDER WIZARD */
+
+.order-section{
+    background:white;
+    padding:85px 0;
+}
+
+.order-heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.order-heading span{
+    color:var(--blue);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.order-heading h2{
+    font-size:28px;
+    color:#17375c;
+    margin:12px 0;
+}
+
+.order-heading p{
+    font-size:13px;
+    color:var(--muted);
+}
+
+.wizard{
+    max-width:920px;
+    margin:auto;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:white;
+    overflow:hidden;
+    box-shadow:0 15px 50px #16375c0b;
+}
+
+.wizard-progress{
+    padding:25px 30px;
+    background:#fbfdff;
+    border-bottom:1px solid var(--border);
+}
+
+.progress-track{
+    height:6px;
+    background:#e9eef5;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+#progressBar{
+    width:12.5%;
+    height:100%;
+    background:var(--blue);
+    transition:.3s;
+}
+
+.step-labels{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:5px;
+    margin-top:14px;
+    text-align:center;
+}
+
+.step-labels span{
+    font-size:10px;
+    color:#a0aabd;
+    transition:.2s;
+}
+
+.step-labels span.current{
+    color:var(--blue);
+    font-weight:800;
+}
+
+.wizard-body{
+    padding:35px;
+}
+
+.wizard-step{
+    display:none;
+    animation:fade .3s ease;
+}
+
+.wizard-step.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.wizard-step h3{
+    font-size:21px;
+    color:#17375c;
+    margin-bottom:9px;
+}
+
+.wizard-step>p{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.option-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    border-color:#8bbdff;
+    background:#f7faff;
+}
+
+.option:has(input:checked){
+    border-color:var(--blue);
+    background:#eff6ff;
+}
+
+.option input{
+    accent-color:var(--blue);
+    width:16px;
+    height:16px;
+}
+
+.option-icon{
+    font-size:24px;
+}
+
+.option strong{
+    display:block;
+    font-size:13px;
+}
+
+.option small{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    margin-top:5px;
+}
+
+.wizard-input,
+.wizard-textarea{
+    width:100%;
+    background:#fbfcfe;
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:15px;
+    outline:none;
+    color:var(--text);
+    font-size:13px;
+}
+
+.wizard-input:focus,
+.wizard-textarea:focus{
+    border-color:var(--blue);
+}
+
+.wizard-textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+.hint{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:11px;
+}
+
+.wizard-navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:35px;
+    padding-top:22px;
+    border-top:1px solid var(--border);
+}
+
+.wizard-navigation button{
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:700;
+}
+
+.back-btn{
+    border:1px solid var(--border);
+    color:#68778e;
+    background:white;
+}
+
+.next-btn{
+    border:0;
+    background:var(--blue);
+    color:white;
+}
+
+.back-btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+/* STEPS SUMMARY */
+
+.summary{
+    background:#f2f7ff;
+    border:1px solid #dceaff;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:18px;
+    font-size:12px;
+    line-height:2.3;
+}
+
+/* HOW IT WORKS */
+
+.how-section{
+    background:#f5f8fc;
+}
+
+.how-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.how-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:25px;
+    text-align:center;
+}
+
+.how-number{
+    width:45px;
+    height:45px;
+    margin:0 auto 17px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#eaf3ff;
+    color:var(--blue);
+    font-weight:800;
+    font-size:18px;
+}
+
+.how-card h3{
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.how-card p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:2;
+}
+
+/* FEATURES */
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.feature-card{
+    border:1px solid var(--border);
+    background:white;
+    border-radius:12px;
+    padding:25px;
+}
+
+.feature-icon{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.feature-card h3{
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.feature-card p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:2.2;
+}
+
+/* FAQ */
+
+.faq-section{
+    background:#f5f8fc;
+}
+
+.faq-list{
+    max-width:850px;
+    margin:auto;
+    display:grid;
+    gap:12px;
+}
+
+.faq-item{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.faq-question{
+    width:100%;
+    padding:18px;
+    background:white;
+    border:0;
+    display:flex;
+    justify-content:space-between;
+    text-align:right;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
+    color:#253a55;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 18px 18px;
+    font-size:12px;
+    color:var(--muted);
+    line-height:2.3;
+}
+
+.faq-item.open .faq-answer{
+    display:block;
+}
+
+.faq-item.open .faq-question{
+    color:var(--blue);
+}
+
+/* CONTACT */
+
+.contact-section{
+    background:white;
+}
+
+.contact-box{
+    max-width:850px;
+    margin:auto;
+    background:linear-gradient(120deg,#0c3261,#1677e8);
+    color:white;
+    border-radius:17px;
+    padding:45px 25px;
+    text-align:center;
+    box-shadow:0 20px 45px #1677e830;
+}
+
+.contact-box h2{
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.contact-box p{
+    font-size:13px;
+    line-height:2.2;
+    color:#e0edff;
+}
+
+.phone-number{
+    display:inline-block;
+    direction:ltr;
+    font-size:27px;
+    font-weight:800;
+    margin:20px 0;
+}
+
+.contact-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.contact-actions a{
+    padding:12px 23px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.contact-call{
+    background:white;
+    color:var(--blue);
+}
+
+.contact-copy{
+    border:1px solid #ffffff75;
+    color:white;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    background:#10243c99;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:480px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    animation:fade .3s;
+}
+
+.success-icon{
+    width:65px;
+    height:65px;
+    background:#e4f9ef;
+    color:#16a66a;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    margin:0 auto 18px;
+    font-size:30px;
+}
+
+.modal-box h2{
+    color:#17375c;
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.modal-box p{
+    font-size:12px;
+    color:var(--muted);
+    line-height:2.2;
+    margin-bottom:15px;
+}
+
+.modal-phone{
+    display:block;
+    direction:ltr;
+    color:var(--blue);
+    font-size:25px;
+    font-weight:800;
+    margin:15px 0;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.modal-actions a,
+.modal-actions button{
+    border:0;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:700;
+}
+
+.modal-call{
+    background:var(--blue);
+    color:white;
+}
+
+.modal-close{
+    background:#edf1f6;
+    color:#45546a;
+}
+
+/* FOOTER */
+
+footer{
+    background:#10243c;
+    color:white;
+    padding:40px 0 20px;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+footer .logo{
+    color:white;
+}
+
+footer p{
+    color:#a9bad0;
+    font-size:12px;
+    line-height:2;
+}
+
+.footer-bottom{
+    border-top:1px solid #ffffff20;
+    margin-top:30px;
+    padding-top:18px;
+    text-align:center;
+    color:#9aabc0;
+    font-size:11px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .hero-content{
+        grid-template-columns:1fr;
+    }
+
+    .hero-visual{
+        min-height:280px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .container{
+        width:92%;
+    }
+
+    .navbar{
+        height:65px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .nav-actions .btn{
+        padding:9px 11px;
+        font-size:10px;
+    }
+
+    .hero{
+        padding:50px 0;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .hero-stats{
+        gap:20px;
+    }
+
+    .hero-stat strong{
+        font-size:17px;
+    }
+
+    .benefit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service-grid,
+    .how-grid,
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:55px 0;
+    }
+
+    .section-heading h2,
+    .order-heading h2{
+        font-size:23px;
+    }
+
+    .wizard-body{
+        padding:20px;
+    }
+
+    .wizard-progress{
+        padding:20px 10px;
+    }
+
+    .step-labels span{
+        font-size:8px;
+    }
+
+    .option-grid{
+        grid-template-columns:1fr;
+    }
+
+    .wizard-step h3{
+        font-size:18px;
+    }
+
+    .wizard-navigation button{
+        padding:11px 17px;
+    }
+
+    .contact-box{
+        padding:35px 15px;
+    }
+
+    .contact-box h2{
+        font-size:21px;
+    }
+
+    .phone-number{
+        font-size:23px;
+    }
+}
+
+/* STARK WEB - BLUE & WHITE THEME */
+
+body {
+    background: #0c3261;
+    color: white;
+}
+
+/* Main sections */
+
+.hero,
+.services-section,
+.how-section,
+.faq-section {
+    background: #0c3261;
+}
+
+/* Hero */
+
+.hero {
+    background:
+        radial-gradient(circle at 10% 20%, #1677e855, transparent 35%),
+        linear-gradient(120deg, #0c3261, #14549a);
+}
+
+.hero h1,
+.hero-stat strong {
+    color: white;
+}
+
+.hero-description,
+.hero-stat span {
+    color: #d5e7ff;
+}
+
+.hero-badge {
+    background: white;
+    color: #1677e8;
+    border-color: white;
+}
+
+/* Section headings */
+
+.section-heading h2,
+.order-heading h2 {
+    color: white;
+}
+
+.section-heading p,
+.order-heading p {
+    color: #d5e7ff;
+}
+
+/* White cards */
+
+.service-card,
+.how-card,
+.feature-card,
+.faq-item {
+    background: white;
+    color: #202b3c;
+    border-color: #e5eaf1;
+}
+
+/* White backgrounds */
+
+.benefits,
+.order-section,
+.contact-section {
+    background: white;
+}
+
+/* Wizard */
+
+.wizard {
+    background: white;
+}
+
+.wizard-progress {
+    background: #f5f8fc;
+}
+
+.option {
+    background: white;
+}
+
+.wizard-input,
+.wizard-textarea {
+    background: white;
+}
+
+/* Features */
+
+.feature-card h3,
+.how-card h3,
+.service-content h3 {
+    color: #17375c;
+}
+
+/* FAQ */
+
+.faq-question {
+    background: white;
+}
+
+/* Blue buttons */
+
+.btn-primary,
+.next-btn {
+    background: #1677e8;
+    color: white;
+}
+
+/* White backgrounds instead of pale blue */
+
+.btn-light,
+.order-btn,
+.benefit-icon,
+.how-number {
+    background: white;
+    color: #1677e8;
+}
+
+.service-tags span {
+    background: #f1f5fa;
+}
+
+/* Contact */
+
+.contact-box {
+    background: linear-gradient(135deg, #0c3261, #1677e8);
+}
+
+/* Footer */
+
+footer {
+    background: #071d36;
+}
+
+/* Mobile */
+
+@media(max-width:600px) {
+    .hero {
+        background: linear-gradient(145deg, #0c3261, #1677e8);
+    }
+}
+/* BLACK TEXT - ORDER WIZARD */
+
+.wizard-step h3,
+.wizard-step p,
+.option strong,
+.option small,
+.option,
+.wizard-input,
+.wizard-textarea,
+.hint,
+.step-labels span {
+    color: #000000;
+}
+
+.option:has(input:checked) {
+    color: #000000;
+}
+
+.back-btn {
+    color: #000000;
+}
+/* BLACK TEXT - SUCCESS MODAL */
+
+.modal-box h2,
+.modal-box p,
+.modal-box .summary,
+.modal-box .summary strong,
+.modal-box .summary br {
+    color: #000000 !important;
+}
+
+.modal-box .modal-phone {
+    color: #000000 !important;
+}
+
+.modal-box .modal-close {
+    color: #000000 !important;
+}
+
+/* Keep the success icon green */
+.modal-box .success-icon {
+    color: #16a66a !important;
+}
+.benefit h3,
+.benefit p {
+    color: #000000 !important;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
-    <header>
+<header>
+<div class="container navbar">
 
-        <div class="navbar">
+<a href="#" class="logo">STARK <span>WEB</span></a>
 
-            <div class="logo">
-                STARK<span>WEB</span>
-            </div>
+<nav class="nav-links">
+<a href="#">صفحه اصلی</a>
+<a href="#services">خدمات</a>
+<a href="#order">ثبت سفارش</a>
+<a href="#how">مراحل سفارش</a>
+<a href="#faq">سؤالات متداول</a>
+<a href="#contact">تماس با ما</a>
+</nav>
 
-            <!-- منوی لپ‌تاپ -->
-            <nav class="desktop-menu">
-                <a href="#home">خانه</a>
-                <a href="#services">خدمات</a>
-                <a href="#why">درباره ما</a>
-                <a href="#pricing">قیمت‌ها</a>
-                <a href="#contact">تماس</a>
-                <a href="friendss.html">دوستان</a>
-            </nav>
-
-            <a class="header-btn" href="#contact">
-                سفارش سایت
-            </a>
-
-            <!-- فقط موبایل -->
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                ☰
-            </button>
-
-        </div>
-
-        <!-- منوی موبایل -->
-        <nav class="mobile-menu" id="mobileMenu">
-            <a href="#home" onclick="closeMenu()">خانه</a>
-            <a href="#services" onclick="closeMenu()">خدمات</a>
-            <a href="#why" onclick="closeMenu()">درباره ما</a>
-            <a href="#pricing" onclick="closeMenu()">قیمت‌ها</a>
-            <a href="#contact" onclick="closeMenu()">تماس</a>
-            <a href="friendss.html" onclick="closeMenu()">دوستان</a>
-        </nav>
-
-    </header>
-
-    <!-- ================= HERO ================= -->
-
-    <main id="home">
-
-        <section class="hero">
-
-            <div class="hero-text">
-
-                <span class="badge">
-                    طراحی سایت مدرن و حرفه‌ای
-                </span>
-
-                <h1>
-                    سایتت رو
-                    <span>متفاوت</span>
-                    بساز
-                </h1>
-
-                <p>
-                    در STARK WEB برای شما سایت‌هایی سریع،
-                    مدرن، زیبا و کاملاً واکنش‌گرا طراحی می‌کنیم؛
-                    تا کسب‌وکارتان در دنیای دیجیتال حرفه‌ای دیده شود.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#contact" class="primary-btn">
-                        شروع کنید 🚀
-                    </a>
-
-                    <a href="#services" class="secondary-btn">
-                        مشاهده خدمات
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- لوگوی سه‌بعدی دوطرفه -->
-
-            <div class="hero-card">
-
-              <div class="hero-logo">
-<span class="front">STARK <span class="web-box">WEB</span></span>
-
-    <span class="back">
-        <span class="logo-title">سفارش سایت</span>
-        <span class="logo-phone">09376163920</span>
-    </span>
+<div class="nav-actions">
+<a href="#contact" class="btn btn-light">مشاوره</a>
+<button class="btn btn-primary" onclick="startOrder()">ثبت سفارش</button>
 </div>
 
-            </div>
+</div>
+</header>
 
-        </section>
+<main>
 
-        <!-- ================= SERVICES ================= -->
+<!-- HERO -->
 
-        <section id="services">
+<section class="hero">
+<div class="container hero-content">
+
+<div>
 
-            <div class="section-title">
+<div class="hero-badge">
+✦ طراحی حرفه‌ای وب‌سایت با STARK WEB
+</div>
+
+<h1>
+کسب‌وکار خودت رو<br>
+با یک <span>وب‌سایت حرفه‌ای</span><br>
+متفاوت کن!
+</h1>
+
+<p class="hero-description">
+ایده خودت رو به یک وب‌سایت واقعی تبدیل کن.
+با انتخاب امکانات موردنیاز، سطح طراحی و توضیحات پروژه،
+سفارش خودت رو در چند مرحله ثبت کن.
+</p>
 
-                <span>خدمات ما</span>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="startOrder()">
+شروع ثبت سفارش ←
+</button>
 
-                <h2>
-                    چیزی بیشتر از یک سایت
-                </h2>
+<a href="#services" class="btn btn-light">
+مشاهده خدمات
+</a>
+</div>
+
+<div class="hero-stats">
 
-                <p>
-                    هر چیزی که برای داشتن یک سایت حرفه‌ای نیاز دارید.
-                </p>
+<div class="hero-stat">
+<strong>۳ سطح</strong>
+<span>طراحی سایت</span>
+</div>
 
-            </div>
+<div class="hero-stat">
+<strong>اختصاصی</strong>
+<span>طراحی متناسب با نیاز</span>
+</div>
 
-            <div class="services">
+<div class="hero-stat">
+<strong>۲۴/۷</strong>
+<span>امکان ثبت سفارش</span>
+</div>
 
-                <div class="service-card">
+</div>
+</div>
 
-                    <div class="service-icon">⌘</div>
+<div class="hero-visual">
 
-                    <h3>
-                        طراحی سایت
-                    </h3>
+<div class="visual-card">
 
-                    <p>
-                        طراحی سایت اختصاصی با ظاهر مدرن،
-                        حرفه‌ای و متناسب با برند شما.
-                    </p>
+<div class="visual-top">
+<div class="visual-logo">STARK <span>WEB</span></div>
+<div class="visual-dot"></div>
+</div>
 
-                </div>
+<div class="visual-title">وب‌سایت جدید شما!</div>
+<div class="visual-subtitle">
+ایده‌ات رو به دنیای دیجیتال بیار
+</div>
 
-                <div class="service-card">
+<div class="visual-lines">
+<div></div>
+<div></div>
+<div></div>
+</div>
 
-                    <div class="service-icon">◈</div>
+<div class="visual-button">
+طراحی اختصاصی وب‌سایت
+</div>
 
-                    <h3>
-                        طراحی واکنش‌گرا
-                    </h3>
+</div>
 
-                    <p>
-                        سایت شما در موبایل، تبلت و لپ‌تاپ
-                        به بهترین شکل نمایش داده می‌شود.
-                    </p>
+</div>
 
-                </div>
+</div>
+</section>
 
-                <div class="service-card">
+<!-- BENEFITS -->
 
-                    <div class="service-icon">⚡</div>
+<section class="benefits">
+<div class="container benefit-grid">
 
-                    <h3>
-                        سرعت بالا
-                    </h3>
+<div class="benefit">
+<div class="benefit-icon">⚡</div>
+<div>
+<h3>طراحی مدرن</h3>
+<p>ظاهر حرفه‌ای و امروزی</p>
+</div>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🎯</div>
+<div>
+<h3>متناسب با نیاز شما</h3>
+<p>انتخاب امکانات دلخواه</p>
+</div>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">💬</div>
+<div>
+<h3>مشاوره و هماهنگی</h3>
+<p>ارتباط مستقیم با طراح</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="section services-section" id="services">
+<div class="container">
+
+<div class="section-heading">
+<span class="small-title">OUR SERVICES</span>
+<h2>خدمات طراحی سایت</h2>
+<p>سطح طراحی موردنظرت رو انتخاب کن و سفارش بده.</p>
+</div>
 
-                    <p>
-                        کدنویسی بهینه برای تجربه سریع‌تر
-                        و بهتر کاربران سایت.
-                    </p>
+<div class="service-filters">
+
+<button class="filter-btn active" onclick="filterServices('all',this)">
+همه خدمات
+</button>
+
+
+</div>
+
+<div class="service-grid">
+
+<div class="service-card" data-category="personal" data-name="سایت پایه شخصی">
+
+<div class="service-image">
+🌐
+<span>پلن پایه</span>
+</div>
+
+<div class="service-content">
+<h3>طراحی سایت پایه</h3>
+<p>یک وب‌سایت ساده، زیبا و کاربردی برای معرفی شما یا کسب‌وکارتان.</p>
+
+<div class="service-tags">
+<span>طراحی واکنش‌گرا</span>
+<span>صفحات معرفی</span>
+</div>
 
-                </div>
+<div class="service-bottom">
+<a href="paye.html" class="order-btn">نمونه کار</a>
+<button class="order-btn" onclick="chooseLevel('پایه')">انتخاب پلن</button>
+</div>
+</div>
+</div>
+
+<div class="service-card" data-category="business" data-name="سایت نیمه پیشرفته">
+
+<div class="service-image business">
+💻
+<span>نیمه پیشرفته</span>
+</div>
+
+<div class="service-content">
+<h3>طراحی سایت نیمه‌پیشرفته</h3>
+<p>طراحی حرفه‌ای با امکانات بیشتر و ظاهر اختصاصی برای کسب‌وکارها.</p>
+
+<div class="service-tags">
+<span>طراحی اختصاصی</span>
+<span>امکانات بیشتر</span>
+</div>
+
+<div class="service-bottom">
+<a href="nime pishrafte.html" class="order-btn">نمونه کار</a>
+<button class="order-btn" onclick="chooseLevel('نیمه‌پیشرفته')">انتخاب پلن</button>
+</div>
+</div>
+</div>
+
+<div class="service-card" data-category="shop" data-name="سایت پیشرفته">
+
+<div class="service-image shop">
+🚀
+<span>پلن پیشرفته</span>
+</div>
+
+<div class="service-content">
+<h3>طراحی سایت پیشرفته</h3>
+<p>طراحی اختصاصی با امکانات ویژه و قابلیت‌های متناسب با پروژه.</p>
+
+<div class="service-tags">
+<span>امکانات ویژه</span>
+<span>قابلیت توسعه</span>
+</div>
+
+<div class="service-bottom">
+<a href="https://karendino7.github.io/WILDWORLD/" class="order-btn">نمونه کار</a>
+<button class="order-btn" onclick="chooseLevel('پیشرفته')">انتخاب پلن</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ORDER WIZARD -->
+
+<section class="order-section" id="order">
+<div class="container">
+
+<div class="order-heading">
+<span>STARK WEB ORDER SYSTEM</span>
+<h2>سفارش طراحی سایت</h2>
+<p>در چند مرحله کوتاه، جزئیات سایت موردنظرت رو مشخص کن.</p>
+</div>
+
+<div class="wizard">
+
+<div class="wizard-progress">
+
+<div class="progress-track">
+<div id="progressBar"></div>
+</div>
+
+<div class="step-labels">
+<span class="current">موضوع</span>
+<span>نوع سایت</span>
+<span>صفحات</span>
+<span>زمان</span>
+<span>سطح</span>
+<span>توضیحات</span>
+<span>نمونه</span>
+<span>امکانات</span>
+</div>
+
+</div>
+
+<div class="wizard-body">
+
+<!-- STEP 1 -->
+
+<div class="wizard-step active">
+<h3>موضوع سایت خود را انتخاب کنید</h3>
+<p>وب‌سایت شما برای چه کاری ساخته می‌شود؟</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="radio" name="subject" value="فروشگاهی">
+<span class="option-icon">🛍️</span>
+<strong>فروشگاهی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="شرکتی">
+<span class="option-icon">🏢</span>
+<strong>شرکتی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="شخصی">
+<span class="option-icon">👤</span>
+<strong>شخصی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="خبری">
+<span class="option-icon">📰</span>
+<strong>خبری</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="آموزشی">
+<span class="option-icon">🎓</span>
+<strong>آموزشی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="رستورانی">
+<span class="option-icon">🍔</span>
+<strong>رستورانی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="subject" value="سایر">
+<span class="option-icon">🌐</span>
+<strong>سایر</strong>
+</label>
+
+</div>
+</div>
+
+<!-- STEP 2 -->
+
+<div class="wizard-step">
+<h3>چه نوع سایتی می‌خواهید؟</h3>
+<p>روش پیاده‌سازی سایت را انتخاب کنید.</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="radio" name="type" value="کدنویسی اختصاصی">
+<span class="option-icon">💻</span>
+<strong>کدنویسی اختصاصی</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="type" value="وردپرس">
+<span class="option-icon">🌐</span>
+<strong>وردپرس</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="type" value="نیاز به مشاوره">
+<span class="option-icon">🤔</span>
+<strong>نیاز به مشاوره دارم</strong>
+</label>
+
+</div>
+</div>
+
+<!-- STEP 3 -->
+
+<div class="wizard-step">
+<h3>چند صفحه نیاز دارید؟</h3>
+<p>تعداد تقریبی صفحات سایت را مشخص کنید.</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="radio" name="pages" value="۱ تا ۳ صفحه">
+<strong>۱ تا ۳ صفحه</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="pages" value="۴ تا ۶ صفحه">
+<strong>۴ تا ۶ صفحه</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="pages" value="۷ تا ۱۰ صفحه">
+<strong>۷ تا ۱۰ صفحه</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="pages" value="بیشتر از ۱۰ صفحه">
+<strong>بیشتر از ۱۰ صفحه</strong>
+</label>
+
+</div>
+</div>
+
+<!-- STEP 4 -->
+
+<div class="wizard-step">
+<h3>چه زمانی سایت را نیاز دارید؟</h3>
+<p>زمان تقریبی موردنظرتان را انتخاب کنید.</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="radio" name="time" value="فوری">
+<strong>فوری</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="time" value="۳ تا ۷ روز">
+<strong>۳ تا ۷ روز</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="time" value="۱ تا ۲ هفته">
+<strong>۱ تا ۲ هفته</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="time" value="بیشتر از ۲ هفته">
+<strong>بیشتر از ۲ هفته</strong>
+</label>
+
+<label class="option">
+<input type="radio" name="time" value="توافقی">
+<strong>توافقی</strong>
+</label>
+
+</div>
+</div>
+
+<!-- STEP 5 -->
+
+<div class="wizard-step">
+<h3>چه سطحی از طراحی سایت می‌خواهید؟</h3>
+<p>یکی از سه سطح طراحی STARK WEB را انتخاب کنید.</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="radio" name="level" value="پایه">
+<span class="option-icon">🌐</span>
+<div>
+<strong>پایه</strong>
+<small>طراحی ساده و کاربردی</small>
+</div>
+</label>
+
+<label class="option">
+<input type="radio" name="level" value="نیمه‌پیشرفته">
+<span class="option-icon">💻</span>
+<div>
+<strong>نیمه‌پیشرفته</strong>
+<small>طراحی حرفه‌ای با امکانات بیشتر</small>
+</div>
+</label>
+
+<label class="option">
+<input type="radio" name="level" value="پیشرفته">
+<span class="option-icon">🚀</span>
+<div>
+<strong>پیشرفته</strong>
+<small>طراحی اختصاصی با امکانات ویژه</small>
+</div>
+</label>
+
+</div>
+</div>
+
+<!-- STEP 6 -->
+
+<div class="wizard-step">
+<h3>توضیحات تکمیلی پروژه</h3>
+<p>هر چیزی که درباره سایت خود در نظر دارید بنویسید.</p>
+
+<textarea id="details" class="wizard-textarea"
+placeholder="مثلاً یک سایت فروشگاهی با رنگ آبی و سفید می‌خواهم..."></textarea>
+
+</div>
+
+<!-- STEP 7 -->
+
+<div class="wizard-step">
+<h3>سایت مشابه دارید؟</h3>
+<p>آدرس سایتی که طراحی آن را دوست دارید وارد کنید.</p>
+
+<input id="reference" class="wizard-input"
+placeholder="https://example.com">
+
+<p class="hint">اگر نمونه‌ای ندارید، این قسمت را خالی بگذارید.</p>
+</div>
+
+<!-- STEP 8 -->
+
+<div class="wizard-step">
+<h3>امکانات تکمیلی</h3>
+<p>امکانات موردنیاز خود را انتخاب کنید.</p>
+
+<div class="option-grid">
+
+<label class="option">
+<input type="checkbox" name="extra" value="پنل مدیریت">
+<strong>پنل مدیریت</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="ورود و ثبت نام">
+<strong>ورود و ثبت‌نام</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="فروشگاه اینترنتی">
+<strong>فروشگاه اینترنتی</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="درگاه پرداخت">
+<strong>درگاه پرداخت</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="چت آنلاین">
+<strong>چت آنلاین</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="سئو">
+<strong>سئو</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="هوش مصنوعی">
+<strong>هوش مصنوعی</strong>
+</label>
+
+<label class="option">
+<input type="checkbox" name="extra" value="نسخه موبایل">
+<strong>نسخه موبایل</strong>
+</label>
+
+</div>
+</div>
+
+<!-- NAVIGATION -->
+
+<div class="wizard-navigation">
+
+<button class="back-btn" id="backBtn" onclick="changeStep(-1)">
+مرحله قبل
+</button>
+
+<button class="next-btn" id="nextBtn" onclick="changeStep(1)">
+مرحله بعد ←
+</button>
+
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="section how-section" id="how">
+<div class="container">
+
+<div class="section-heading">
+<span class="small-title">HOW IT WORKS</span>
+<h2>مراحل سفارش طراحی سایت</h2>
+<p>از ثبت سفارش تا شروع طراحی سایت، فقط چند مرحله فاصله دارید.</p>
+</div>
+
+<div class="how-grid">
+
+<div class="how-card">
+<div class="how-number">۱</div>
+<h3>ثبت سفارش</h3>
+<p>اطلاعات پروژه و امکانات موردنیاز خود را در فرم سفارش ثبت کنید.</p>
+</div>
+
+<div class="how-card">
+<div class="how-number">۲</div>
+<h3>مشاوره و هماهنگی</h3>
+<p>برای بررسی جزئیات، زمان و هزینه پروژه با طراح هماهنگ می‌کنید.</p>
+</div>
+
+<div class="how-card">
+<div class="how-number">۳</div>
+<h3>شروع طراحی</h3>
+<p>پس از توافق، فرایند طراحی و پیاده‌سازی وب‌سایت آغاز می‌شود.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+
+<section class="section">
+<div class="container">
+
+<div class="section-heading">
+<span class="small-title">WHY STARK WEB</span>
+<h2>چرا STARK WEB؟</h2>
+<p>تجربه‌ای متفاوت در طراحی وب‌سایت</p>
+</div>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<div class="feature-icon">⚡</div>
+<h3>سرعت و عملکرد</h3>
+<p>توجه به سرعت بارگذاری و تجربه بهتر کاربران در وب‌سایت.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🎨</div>
+<h3>طراحی اختصاصی</h3>
+<p>طراحی متناسب با موضوع و هویت کسب‌وکار شما.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">📱</div>
+<h3>سازگار با موبایل</h3>
+<p>نمایش مناسب سایت در موبایل، تبلت و کامپیوتر.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🛠️</div>
+<h3>قابلیت توسعه</h3>
+<p>امکان برنامه‌ریزی برای افزودن امکانات جدید به پروژه.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">💬</div>
+<h3>ارتباط مستقیم</h3>
+<p>امکان هماهنگی و مطرح کردن نیازهای پروژه با طراح.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🚀</div>
+<h3>ایده‌های جدید</h3>
+<p>تبدیل ایده‌های شما به تجربه‌ای دیجیتال و کاربردی.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+
+<section class="section faq-section" id="faq">
+<div class="container">
+
+<div class="section-heading">
+<span class="small-title">FAQ</span>
+<h2>سؤالات متداول</h2>
+<p>پاسخ سؤالات رایج درباره طراحی سایت</p>
+</div>
+
+<div class="faq-list">
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFAQ(this)">
+طراحی سایت چقدر زمان می‌برد؟
+<span>＋</span>
+</button>
+<div class="faq-answer">
+زمان طراحی به امکانات، تعداد صفحات و سطح پروژه بستگی دارد و پس از بررسی سفارش مشخص می‌شود.
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFAQ(this)">
+تفاوت پلن پایه و پیشرفته چیست؟
+<span>＋</span>
+</button>
+<div class="faq-answer">
+پلن پایه برای سایت‌های ساده و معرفی مناسب است. پلن نیمه‌پیشرفته امکانات و طراحی بیشتری دارد و پلن پیشرفته برای پروژه‌های اختصاصی و پیچیده‌تر در نظر گرفته شده است.
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFAQ(this)">
+چگونه سفارش خود را ثبت کنم؟
+<span>＋</span>
+</button>
+<div class="faq-answer">
+فرم ثبت سفارش را تکمیل کنید. در پایان، شماره تماس برای هماهنگی و بررسی سفارش نمایش داده می‌شود.
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFAQ(this)">
+آیا سایت در موبایل هم نمایش داده می‌شود؟
+<span>＋</span>
+</button>
+<div class="faq-answer">
+بله، طراحی واکنش‌گرا برای نمایش مناسب در اندازه‌های مختلف صفحه در نظر گرفته می‌شود.
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFAQ(this)">
+چطور هزینه طراحی مشخص می‌شود؟
+<span>＋</span>
+</button>
+<div class="faq-answer">
+هزینه پس از بررسی سطح طراحی، امکانات، تعداد صفحات و جزئیات پروژه با شما هماهنگ خواهد شد.
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section contact-section" id="contact">
+<div class="container">
+
+<div class="contact-box">
+
+<h2>برای شروع آماده‌ای؟</h2>
+
+<p>
+برای مشاوره، پیگیری سفارش و هماهنگی پرداخت
+با طراح STARK WEB در ارتباط باش.
+</p>
+
+<a href="tel:09376163920" class="phone-number">
+۰۹۳۷۶۱۶۳۹۲۰
+</a>
+
+<div class="contact-actions">
+
+<a href="tel:09376163920" class="contact-call">
+📞 تماس با STARK WEB
+</a>
+
+<a href="#order" class="contact-copy">
+ثبت سفارش جدید
+</a>
 
-            </div>
+</div>
 
-        </section>
+</div>
+</div>
+</section>
 
-        <!-- ================= WHY ================= -->
+</main>
 
-        <section id="why">
+<!-- SUCCESS MODAL -->
 
-            <div class="section-title">
+<div class="modal" id="finalModal">
+<div class="modal-box">
 
-                <span>STARK WEB</span>
+<div class="success-icon">✓</div>
 
-                <h2>
-                    چرا ما؟
-                </h2>
+<h2>اطلاعات سفارش آماده شد!</h2>
 
-            </div>
+<p>
+جزئیات سفارش در این مرورگر ذخیره شد.
+برای ارسال و بررسی نهایی اطلاعات و هماهنگی پرداخت
+با شماره زیر تماس بگیرید.
+</p>
 
-            <div class="why">
+<div class="summary" id="orderSummary"></div>
 
-                <div class="why-card">
+<a href="tel:09376163920" class="modal-phone">
+۰۹۳۷۶۱۶۳۹۲۰
+</a>
 
-                    <strong>100%</strong>
+<div class="modal-actions">
 
-                    <p>
-                        طراحی اختصاصی
-                    </p>
+<a href="tel:09376163920" class="modal-call">
+📞 تماس با طراح
+</a>
 
-                </div>
+<button class="modal-close" onclick="closeModal()">
+بستن
+</button>
 
-                <div class="why-card">
+</div>
 
-                    <strong>24/7</strong>
+</div>
+</div>
 
-                    <p>
-                        دسترسی به سایت
-                    </p>
+<!-- FOOTER -->
 
-                </div>
+<footer>
+<div class="container">
 
-                <div class="why-card">
+<div class="footer-content">
 
-                    <strong>∞</strong>
+<div>
+<div class="logo">STARK <span>WEB</span></div>
+<p>طراحی آینده دیجیتال شما</p>
+</div>
 
-                    <p>
-                        امکان توسعه سایت
-                    </p>
+<div>
+<p>طراحی سایت | طراحی اختصاصی | توسعه وب</p>
+<p>ارتباط: ۰۹۳۷۶۱۶۳۹۲۰</p>
+</div>
 
-                </div>
+</div>
 
-            </div>
+<div class="footer-bottom">
+© 2026 STARK WEB - تمامی حقوق محفوظ است.
+</div>
 
-        </section>
+</div>
+</footer>
 
-        <!-- ================= PRICING ================= -->
+<script>
 
-        <section id="pricing">
+/* SEARCH AND FILTER */
 
-            <div class="section-title">
+function filterServices(category,button){
 
-                <span>قیمت‌ها</span>
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.classList.remove('active');
+});
 
-                <h2>
-                    پلن مناسب خودت را انتخاب کن
-                </h2>
+button.classList.add('active');
 
-                <p>
-                    شروع حرفه‌ای شدن می‌تواند همین امروز باشد.
-                </p>
+document.querySelectorAll('.service-card').forEach(card=>{
 
-            </div>
+    card.style.display =
+    category==='all' || card.dataset.category===category
+    ? 'block'
+    : 'none';
 
-            <div class="pricing">
+});
 
-                <div class="price-card">
+}
 
-                    <h3>
-                        پایه
-                    </h3>
+/* FAQ */
 
-                    <div class="price">
-                        1.500 میلیون
-                        <small>تومان</small>
-                    </div>
+function toggleFAQ(button){
 
-                    <div class="header-btn">
-                        <a href="paye.html">نمونه کار</a>
-                    </div>
+const item=button.parentElement;
 
-                    <ul class="features">
+item.classList.toggle('open');
 
-                        <li>طراحی اختصاصی</li>
-                        <li>پس زمینه رنگی</li>
-                        <li>خط های رنگی</li>
-                        <li>دارای فقط یک صفحه</li>
+const symbol=button.querySelector('span');
 
-                    </ul>
+symbol.textContent=item.classList.contains('open')?'−':'＋';
 
-                    <a href="#contact" class="price-btn">
-                        سفارش
-                    </a>
+}
 
-                </div>
+/* WIZARD */
 
-                <div class="price-card">
+let currentStep=0;
 
-                    <h3>
-                        نیمه پیشرفته
-                    </h3>
+const steps=document.querySelectorAll('.wizard-step');
 
-                    <div class="price">
-                        3 میلیون
-                        <small>تومان</small>
-                    </div>
+const progress=document.getElementById('progressBar');
 
-                    <div class="header-btn">
-                        <a href="nime pishrafte.html">نمونه کار</a>
-                    </div>
+const labels=document.querySelectorAll('.step-labels span');
 
-                    <ul class="features">
+const backBtn=document.getElementById('backBtn');
 
-                        <li>موارد پایه</li>
-                        <li>پس زمینه ی عکس دار</li>
-                        <li>باکس های نوشتاری</li>
-                        <li>عکس پروفایل</li>
+const nextBtn=document.getElementById('nextBtn');
 
-                    </ul>
+function updateWizard(){
 
-                    <a href="#contact" class="price-btn">
-                        سفارش
-                    </a>
+steps.forEach((step,index)=>{
+    step.classList.toggle('active',index===currentStep);
+});
 
-                </div>
+progress.style.width=
+((currentStep+1)/steps.length*100)+'%';
 
-                <div class="price-card featured">
+labels.forEach((label,index)=>{
+    label.classList.toggle('current',index===currentStep);
+});
 
-                    <div class="popular">
-                        محبوب‌ترین
-                    </div>
+backBtn.disabled=currentStep===0;
 
-                    <h3>
-                        پیشرفته
-                    </h3>
+nextBtn.textContent=
+currentStep===steps.length-1
+?'تکمیل و ثبت سفارش'
+:'مرحله بعد ←';
 
-                    <div class="price">
-                        6 میلیون
-                        <small>تومان</small>
-                    </div>
+}
 
-                    <div class="header-btn">
-                        <a href="https://karendino7.github.io/WILDWORLD/">نمونه کار</a>
-                    </div>
+function changeStep(direction){
 
-                    <ul class="features">
+if(direction===1){
 
-                        <li>موارد پایه و نیمه پیشرفته</li>
-                        <li>پس زمینه ی فیلم دار</li>
-                        <li>انیمیشن و افکت</li>
-                        <li>چند صفحه</li>
+const radios=steps[currentStep].querySelectorAll(
+    'input[type="radio"]'
+);
 
-                    </ul>
+const names=[...new Set(
+    [...radios].map(radio=>radio.name)
+)];
 
-                    <a href="#contact" class="price-btn">
-                        سفارش
-                    </a>
+for(const name of names){
 
-                </div>
+    if(!steps[currentStep].querySelector(
+        `input[name="${name}"]:checked`
+    )){
 
-            </div>
+        alert('لطفاً یک گزینه انتخاب کنید.');
 
-        </section>
-                <section id="pricing">
+        return;
+    }
 
-            <div class="section-title">
-                <h2>دامنه ها برای سایت(مهم)</h2>
-                <p>با دامنه اجازه بده مردم سایتت رو انلاین ببینن</p>
-            </div>
+}
 
-            <div class="pricing">
+}
 
-                <div class="price-card featured">
+if(currentStep===steps.length-1 && direction===1){
 
-                    <div class="popular">
-                        پیشنهاد ما
-                    </div>
+showSuccess();
 
-                    <h3>
-                        karendino7.github.io
-                    </h3>
+return;
 
-                    <div class="price">
-                        1 میلیون
-                        <small>تومان</small>
-                    </div>
+}
 
-                    <ul class="features">
-                    </ul>
+currentStep=Math.max(
+    0,
+    Math.min(currentStep+direction,steps.length-1)
+);
 
-                    <a href="#contact" class="price-btn">
-                        سفارش
-                    </a>
+updateWizard();
 
-                </div>
+}
 
-                <div class="price-card featured">
+function startOrder(){
 
-                    <div class="popular">
-                        ویژه
-                    </div>
+document.getElementById('order').scrollIntoView({
+    behavior:'smooth'
+});
 
-                    <h3>
-                        به زودی
-                    </h3>
+}
 
-                    <div class="price">
-                    </div>
+/* SELECT LEVEL */
 
-                    <ul class="features">
-                    </ul>
+function chooseLevel(level){
 
-                </div>
+const input=document.querySelector(
+    `input[name="level"][value="${level}"]`
+);
 
-                <div class="price-card featured">
+if(input){
+    input.checked=true;
+}
 
-                    <div class="popular">
-                        ویژه
-                    </div>
+currentStep=4;
 
-                    <h3>
-                        به زودی
-                    </h3>
+updateWizard();
 
-                    <div class="price">
-                    </div>
+startOrder();
 
-                    <ul class="features">
-                    </ul>
+}
 
-                </div>
+/* ORDER DATA */
 
-            </div>
+function getRadio(name){
 
-        </section>
+const input=document.querySelector(
+    `input[name="${name}"]:checked`
+);
 
-        <!-- ================= CTA ================= -->
+return input ? input.value : '';
 
-        <section id="contact">
+}
 
-            <div class="cta">
+function getOrderData(){
 
-                <h2>
-                    آماده‌ای سایتت رو بسازی؟
-                </h2>
+return {
 
-                <p>
-                    اولین قدم برای حرفه‌ای‌تر دیده شدن،
-                    داشتن یک سایت حرفه‌ای است.
-                </p>
+subject:getRadio('subject'),
 
-                <p>
-                    برای سفارش سایت لطفا جزیاتی مثل رنگ پس زمینه،رنگ خط ها و غیره چی باشند
-                </p>
+type:getRadio('type'),
 
-                <p>
-                    برای سفارش و نمونه کارها و پشتیبانی لطفا به شماره زیر در بله یا واتسپ پیام دهید
-                </p>
+pages:getRadio('pages'),
 
-                <h2>09376163920</h2>
+time:getRadio('time'),
 
-            </div>
+level:getRadio('level'),
 
-        </section>
+details:document.getElementById('details').value,
 
-    </main>
+reference:document.getElementById('reference').value,
 
+extras:[
+    ...document.querySelectorAll(
+        'input[name="extra"]:checked'
+    )
+].map(item=>item.value),
 
+date:new Date().toLocaleString('fa-IR')
 
-    <!-- ================= FOOTER ================= -->
+};
 
-    <footer>
+}
 
-        <strong>STARK WEB</strong>
-        — تمامی حقوق محفوظ است.
+/* SUCCESS */
 
-    </footer>
+function showSuccess(){
 
-    <!-- ================= JAVASCRIPT ================= -->
+const order=getOrderData();
 
-    <script>
+try{
 
-        const form = document.getElementById("loginForm");
-        const passwordInput = document.getElementById("password");
-        const toggleButton = document.getElementById("togglePassword");
-        const message = document.getElementById("message");
+let orders=JSON.parse(
+    localStorage.getItem('starkOrders') || '[]'
+);
 
-        toggleButton.addEventListener("click", function () {
+orders.push(order);
 
-            const hidden = passwordInput.type === "password";
+localStorage.setItem(
+    'starkOrders',
+    JSON.stringify(orders)
+);
 
-            passwordInput.type = hidden ? "text" : "password";
-            toggleButton.textContent = hidden ? "◎" : "◉";
+}catch(error){
 
-            toggleButton.setAttribute(
-                "aria-label",
-                hidden ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
-            );
+console.log('ذخیره سفارش در مرورگر انجام نشد.');
 
-        });
+}
 
-        form.addEventListener("submit", function (event) {
+const summary=document.getElementById('orderSummary');
 
-            event.preventDefault();
+summary.innerHTML=`
 
-            // رمز آزمایشی؛ برای امنیت واقعی از بررسی سمت سرور استفاده کن.
-            if (passwordInput.value === "STARK2026") {
+<strong>خلاصه سفارش شما</strong><br>
+موضوع: ${safeText(order.subject)}<br>
+نوع سایت: ${safeText(order.type)}<br>
+تعداد صفحات: ${safeText(order.pages)}<br>
+زمان: ${safeText(order.time)}<br>
+سطح طراحی: ${safeText(order.level)}<br>
+امکانات: ${safeText(order.extras.join('، ') || 'انتخاب نشده')}
 
-                window.location.href = "a.html";
+`;
 
-            } else {
+document.getElementById('finalModal').classList.add('active');
 
-                message.textContent = "رمز عبور اشتباه است!";
-                passwordInput.value = "";
-                passwordInput.focus();
+}
 
-            }
+function safeText(value){
 
-        });
+const div=document.createElement('div');
 
-        function toggleMenu() {
+div.textContent=value || '—';
 
-            const menu = document.getElementById("mobileMenu");
+return div.innerHTML;
 
-            menu.classList.toggle("active");
+}
 
-        }
+function closeModal(){
 
-        function closeMenu() {
+document.getElementById('finalModal').classList.remove('active');
 
-            const menu = document.getElementById("mobileMenu");
+}
 
-            menu.classList.remove("active");
+/* INITIALIZE */
 
-        }
+updateWizard();
 
-        // بستن منو با کلیک بیرون
-
-        document.addEventListener("click", function (event) {
-
-            const menu = document.getElementById("mobileMenu");
-            const button = document.querySelector(".mobile-menu-btn");
-
-            if (
-                !menu.contains(event.target) &&
-                !button.contains(event.target)
-            ) {
-
-                menu.classList.remove("active");
-
-            }
-
-        });
-
-    </script>
+</script>
 
 </body>
 </html>
+
