@@ -488,14 +488,22 @@ header{
     border-radius:5px;
 }
 
-.service-bottom{
-    border-top:1px solid var(--border);
-    padding-top:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.service-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
 }
 
+.service-price {
+    color: #1677e8;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    white-space: nowrap;
+}
 .service-bottom small{
     color:var(--muted);
     font-size:11px;
@@ -1516,96 +1524,164 @@ footer {
 
 <!-- SERVICES -->
 
+<!-- SERVICES -->
+
 <section class="section services-section" id="services">
 <div class="container">
 
-<div class="section-heading">
-<span class="small-title">OUR SERVICES</span>
-<h2>خدمات طراحی سایت</h2>
-<p>سطح طراحی موردنظرت رو انتخاب کن و سفارش بده.</p>
-</div>
+    <div class="section-heading">
+        <span class="small-title">OUR SERVICES</span>
+        <h2>خدمات طراحی سایت</h2>
+        <p>سطح طراحی موردنظرت رو انتخاب کن و سفارش بده.</p>
+    </div>
 
-<div class="service-filters">
+    <div class="service-filters">
 
-<button class="filter-btn active" onclick="filterServices('all',this)">
-همه خدمات
-</button>
+        <button class="filter-btn active"
+        onclick="filterServices('all',this)">
+            همه خدمات
+        </button>
+
+    </div>
+
+    <div class="service-grid">
+
+        <!-- پلن پایه -->
+
+        <div class="service-card"
+        data-category="personal"
+        data-name="سایت پایه شخصی">
+
+            <div class="service-image">
+                🌐
+                <span>پلن پایه</span>
+            </div>
+
+            <div class="service-content">
+
+                <h3>طراحی سایت پایه</h3>
+
+                <p>
+                    یک وب‌سایت ساده، زیبا و کاربردی برای معرفی شما یا کسب‌وکارتان.
+                </p>
+
+                <div class="service-tags">
+                    <span>طراحی واکنش‌گرا</span>
+                    <span>صفحات معرفی</span>
+                </div>
+
+                <div class="service-bottom">
+
+                    <a href="paye.html" class="order-btn">
+                        نمونه کار
+                    </a>
+
+                    <span class="service-price">
+                        ۱,۵۰۰,۰۰۰ تومان
+                    </span>
+
+                    <button class="order-btn"
+                    onclick="chooseLevel('پایه')">
+                        انتخاب پلن
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
 
 
-</div>
+        <!-- پلن نیمه پیشرفته -->
 
-<div class="service-grid">
+        <div class="service-card"
+        data-category="business"
+        data-name="سایت نیمه پیشرفته">
 
-<div class="service-card" data-category="personal" data-name="سایت پایه شخصی">
+            <div class="service-image business">
+                💻
+                <span>نیمه پیشرفته</span>
+            </div>
 
-<div class="service-image">
-🌐
-<span>پلن پایه</span>
-</div>
+            <div class="service-content">
 
-<div class="service-content">
-<h3>طراحی سایت پایه</h3>
-<p>یک وب‌سایت ساده، زیبا و کاربردی برای معرفی شما یا کسب‌وکارتان.</p>
+                <h3>طراحی سایت نیمه‌پیشرفته</h3>
 
-<div class="service-tags">
-<span>طراحی واکنش‌گرا</span>
-<span>صفحات معرفی</span>
-</div>
+                <p>
+                    طراحی حرفه‌ای با امکانات بیشتر و ظاهر اختصاصی برای کسب‌وکارها.
+                </p>
 
-<div class="service-bottom">
-<a href="paye.html" class="order-btn">نمونه کار</a>
-<button class="order-btn" onclick="chooseLevel('پایه')">انتخاب پلن</button>
-</div>
-</div>
-</div>
+                <div class="service-tags">
+                    <span>طراحی اختصاصی</span>
+                    <span>امکانات بیشتر</span>
+                </div>
 
-<div class="service-card" data-category="business" data-name="سایت نیمه پیشرفته">
+                <div class="service-bottom">
 
-<div class="service-image business">
-💻
-<span>نیمه پیشرفته</span>
-</div>
+                    <a href="nime pishrafte.html" class="order-btn">
+                        نمونه کار
+                    </a>
 
-<div class="service-content">
-<h3>طراحی سایت نیمه‌پیشرفته</h3>
-<p>طراحی حرفه‌ای با امکانات بیشتر و ظاهر اختصاصی برای کسب‌وکارها.</p>
+                    <span class="service-price">
+                        ۳,۰۰۰,۰۰۰ تومان
+                    </span>
 
-<div class="service-tags">
-<span>طراحی اختصاصی</span>
-<span>امکانات بیشتر</span>
-</div>
+                    <button class="order-btn"
+                    onclick="chooseLevel('نیمه‌پیشرفته')">
+                        انتخاب پلن
+                    </button>
 
-<div class="service-bottom">
-<a href="nime pishrafte.html" class="order-btn">نمونه کار</a>
-<button class="order-btn" onclick="chooseLevel('نیمه‌پیشرفته')">انتخاب پلن</button>
-</div>
-</div>
-</div>
+                </div>
 
-<div class="service-card" data-category="shop" data-name="سایت پیشرفته">
+            </div>
+        </div>
 
-<div class="service-image shop">
-🚀
-<span>پلن پیشرفته</span>
-</div>
 
-<div class="service-content">
-<h3>طراحی سایت پیشرفته</h3>
-<p>طراحی اختصاصی با امکانات ویژه و قابلیت‌های متناسب با پروژه.</p>
+        <!-- پلن پیشرفته -->
 
-<div class="service-tags">
-<span>امکانات ویژه</span>
-<span>قابلیت توسعه</span>
-</div>
+        <div class="service-card"
+        data-category="shop"
+        data-name="سایت پیشرفته">
 
-<div class="service-bottom">
-<a href="https://karendino7.github.io/WILDWORLD/" class="order-btn">نمونه کار</a>
-<button class="order-btn" onclick="chooseLevel('پیشرفته')">انتخاب پلن</button>
-</div>
-</div>
-</div>
+            <div class="service-image shop">
+                🚀
+                <span>پلن پیشرفته</span>
+            </div>
 
-</div>
+            <div class="service-content">
+
+                <h3>طراحی سایت پیشرفته</h3>
+
+                <p>
+                    طراحی اختصاصی با امکانات ویژه و قابلیت‌های متناسب با پروژه.
+                </p>
+
+                <div class="service-tags">
+                    <span>امکانات ویژه</span>
+                    <span>قابلیت توسعه</span>
+                </div>
+
+                <div class="service-bottom">
+
+                    <a href="https://karendino7.github.io/WILDWORLD/"
+                    class="order-btn">
+                        نمونه کار
+                    </a>
+
+                    <span class="service-price">
+                        ۶,۰۰۰,۰۰۰ تومان
+                    </span>
+
+                    <button class="order-btn"
+                    onclick="chooseLevel('پیشرفته')">
+                        انتخاب پلن
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
 </section>
 
