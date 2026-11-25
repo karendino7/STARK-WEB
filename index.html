@@ -792,6 +792,47 @@ background:#ffffff !important;
 color:#10213b !important;
 }
 }
+
+/* تصاویر مراحل سفارش */
+
+.how-image {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eaf3ff, #f5f9ff);
+    border-radius: 12px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.how-image img {
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+    transition: .3s;
+}
+
+.how-card:hover .how-image img {
+    transform: scale(1.08);
+}
+
+.how-number {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 15px;
+    font-size: 15px;
+}
+
+.how-card a {
+    display: inline-block;
+    color: #1677e8;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
 </style>
 </head>
 
@@ -1118,29 +1159,44 @@ color:#10213b !important;
 <section class="section how-section" id="how">
 <div class="container">
 <div class="section-heading">
-<span class="small-title">HOW IT WORKS</span>
-<h2>مراحل سفارش طراحی سایت</h2>
-<p>از ثبت سفارش تا شروع طراحی سایت، فقط چند مرحله فاصله دارید.</p>
+
+<h1>سایت خود را در سه کلیک سفارش دهید</h1>
+
 </div>
 
+
 <div class="how-grid">
-<div class="how-card">
-<div class="how-number">۱</div>
-<h3>ثبت سفارش</h3>
-<p>اطلاعات پروژه و امکانات موردنیاز خود را در فرم سفارش ثبت کنید.</p>
+
+    <div class="how-card">
+        <div class="how-image">
+            <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="ثبت سفارش">
+        </div>
+        <div class="how-number">۱</div>
+        <h3>ثبت سفارش طراحی سایت</h3>
+        <p>سفارش خود را ثبت کنید و نیازها و امکانات موردنظرتان را توضیح دهید.</p>
+        <a href="#order">برای ثبت سفارش کلیک کنید</a>
+    </div>
+
+    <div class="how-card">
+        <div class="how-image">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="بررسی سفارش">
+        </div>
+        <div class="how-number">۲</div>
+        <h3>بررسی و پیشنهاد قیمت</h3>
+        <p>جزئیات سفارش بررسی می‌شود و هزینه و زمان تقریبی اجرای پروژه مشخص خواهد شد.</p>
+    </div>
+
+    <div class="how-card">
+        <div class="how-image">
+<img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="تحویل سفارش">
+        </div>
+        <div class="how-number">۳</div>
+        <h3>تکمیل و تحویل سایت</h3>
+        <p>پس از توافق، طراحی انجام می‌شود و وب‌سایت نهایی به شما تحویل داده خواهد شد.</p>
+    </div>
+
 </div>
-<div class="how-card">
-<div class="how-number">۲</div>
-<h3>مشاوره و هماهنگی</h3>
-<p>برای بررسی جزئیات، زمان و هزینه پروژه با طراح هماهنگ می‌کنید.</p>
-</div>
-<div class="how-card">
-<div class="how-number">۳</div>
-<h3>شروع طراحی</h3>
-<p>پس از توافق، فرایند طراحی و پیاده‌سازی وب‌سایت آغاز می‌شود.</p>
-</div>
-</div>
-</div>
+
 </section>
 
 <section class="section">
